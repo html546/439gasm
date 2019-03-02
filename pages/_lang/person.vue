@@ -5,8 +5,7 @@
         <el-row>
           <el-col :span="6">
             <div class="register">
-              <div class="register_left">
-              </div>
+
             </div>
           </el-col>
           <el-col :span="6"></el-col>
@@ -29,7 +28,7 @@ export default {
 }
 </script>
 
-<style lang="" scoped>
+<style scoped>
 .panel1 {
   width: 100%;
   height: 220px;
