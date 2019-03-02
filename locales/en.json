@@ -1,0 +1,34 @@
+{
+    "links": {
+        "home": "Home",
+        "english": "English",
+        "chinese": "Traditional Chinese",
+        "trade": "trading center",
+        "hall": "trading hall",
+        "details": "transaction details",
+        "hangout": "transaction hang out",
+        "browser": "Block Chain Browser",
+        "friends": "Recommended friends",
+        "link": "Cooperative link",
+        "about": "about us",
+        "legal": "legal statement",
+        "tel": "fixed-line telephone",
+        "email": "Mail box",
+        "address": "Company address",
+        "follow": "Sweep away the concerns",
+        "login": "login",
+        "lorr": "Landing or registration",
+        "register":"register"
+    },
+    "home": {
+        "android": "Android Client Download",
+        "ios": "IOS client download",
+        "download_now": "download now",
+        "coin_name": "name",
+        "zh_price": "RMB price",
+        "us_price": "US dollar price",
+        "cn_name": "Chinese name",
+        "coin_gain": "amount of increase",
+        "logo": "Picture logo"
+    }
+}

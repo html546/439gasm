@@ -1,0 +1,34 @@
+{
+    "links": {
+        "home": "主頁",
+        "english": "English",
+        "chinese": "繁體中文",
+        "trade": "交易中心",
+        "hall": "交易大廳",
+        "details": "交易明細",
+        "hangout": "交易掛出",
+        "browser": "區塊鏈瀏覽器",
+        "friends": "推薦好友",
+        "link": "合作链接",
+        "about": "关于我们",
+        "legal": "法律声明",
+        "tel": "固定电话",
+        "email": "电子邮箱",
+        "address": "公司地址",
+        "follow": "扫一扫关注",
+        "login": "登录",
+        "lorr": "登录/注册",
+        "register": "注册"
+    },
+    "home": {
+        "android": "Android客戶端下載",
+        "ios": "ios客戶端下載",
+        "download_now": "立即下載",
+        "coin_name": "名字",
+        "zh_price": "人民幣價格",
+        "us_price": "美元價格",
+        "cn_name": "中文名",
+        "coin_gain": "涨幅",
+        "logo": "图片logo"
+    }
+}
