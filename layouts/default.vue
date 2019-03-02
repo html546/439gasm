@@ -65,6 +65,9 @@
                 <template slot="title">
                   16366644423
                 </template>
+                <el-menu-item index="6-2">
+                  {{$t('links.signout')}}
+                </el-menu-item>
               </el-submenu>
             </template>
             <el-submenu

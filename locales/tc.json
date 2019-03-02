@@ -18,7 +18,8 @@
         "follow": "扫一扫关注",
         "login": "登录",
         "lorr": "登录/注册",
-        "register": "注册"
+        "register": "注册",
+        "signout": "退出"
     },
     "home": {
         "android": "Android客戶端下載",

@@ -18,7 +18,8 @@
         "follow": "Sweep away the concerns",
         "login": "login",
         "lorr": "Landing or registration",
-        "register":"register"
+        "register": "register",
+        "signout": "Sign out"
     },
     "home": {
         "android": "Android Client Download",
