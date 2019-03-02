@@ -111,12 +111,12 @@
                   {{$t('links.lorr')}}
                 </template>
                 <el-menu-item index="7-1">
-                  <nuxt-link to="">
+                  <nuxt-link :to="$i18n.path('login')">
                     {{$t('links.login')}}
                   </nuxt-link>
                 </el-menu-item>
                 <el-menu-item index="7-2">
-                  <nuxt-link to="">
+                  <nuxt-link :to="$i18n.path('register')">
                     {{$t('links.register')}}
                   </nuxt-link>
                 </el-menu-item>
