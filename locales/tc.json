@@ -19,7 +19,8 @@
         "login": "登录",
         "lorr": "登录/注册",
         "register": "注册",
-        "signout": "退出"
+        "signout": "退出",
+        "person": "个人中心"
     },
     "home": {
         "android": "Android客戶端下載",

@@ -19,7 +19,8 @@
         "login": "login",
         "lorr": "Landing or registration",
         "register": "register",
-        "signout": "Sign out"
+        "signout": "Sign out",
+        "person":"Personal Center"
     },
     "home": {
         "android": "Android Client Download",

@@ -38,23 +38,23 @@
                   </nuxt-link>
                 </el-menu-item>
                 <el-menu-item index="2-2">
-                  <nuxt-link to="">
+                  <nuxt-link :to="$i18n.path('trade2')">
                     {{$t('links.details')}}
                   </nuxt-link>
                 </el-menu-item>
                 <el-menu-item index="2-3">
-                  <nuxt-link to="">
+                  <nuxt-link :to="$i18n.path('trade3')">
                     {{$t('links.hangout')}}
                   </nuxt-link>
                 </el-menu-item>
               </el-submenu>
               <el-menu-item index="3">
-                <nuxt-link to="">
+                <nuxt-link :to="$i18n.path('browser')">
                   {{$t('links.browser')}}
                 </nuxt-link>
               </el-menu-item>
               <el-menu-item index="4">
-                <nuxt-link to="">
+                <nuxt-link :to="$i18n.path('friend')">
                   {{$t('links.friends')}}
                 </nuxt-link>
               </el-menu-item>
@@ -65,6 +65,11 @@
                 <template slot="title">
                   16366644423
                 </template>
+                <el-menu-item index="6-1">
+                  <nuxt-link :to="$i18n.path('person')">
+                    {{$t('links.person')}}
+                  </nuxt-link>
+                </el-menu-item>
                 <el-menu-item index="6-2">
                   {{$t('links.signout')}}
                 </el-menu-item>
@@ -227,7 +232,7 @@ export default {
     },
     getAd() {
       axios.post('http://127.0.0.1:3000/api/Login/getad').then(res => {
-        console.log(res);
+        // console.log(res);
         this.bg = res.data.data;
       })
     }
