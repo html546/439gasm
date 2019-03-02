@@ -1,7 +1,8 @@
 export const state = () => ({
     locales: ['en', 'tc'],
     locale: 'en',
-    islogin: true
+    islogin: false,
+    message: {}
 })
 
 export const mutations = {
@@ -12,5 +13,8 @@ export const mutations = {
     },
     setLogin(state) {
         state.islogin = true;
+    },
+    clearLogin(state) {
+        state.islogin = false;
     }
 }

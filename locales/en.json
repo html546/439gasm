@@ -20,7 +20,7 @@
         "lorr": "Landing or registration",
         "register": "register",
         "signout": "Sign out",
-        "person":"Personal Center"
+        "person": "Personal Center"
     },
     "home": {
         "android": "Android Client Download",
@@ -32,5 +32,11 @@
         "cn_name": "Chinese name",
         "coin_gain": "amount of increase",
         "logo": "Picture logo"
+    },
+    "login": {
+        "account": "Account login",
+        "username": "username",
+        "pass": "password",
+        "submit": "submit"
     }
 }

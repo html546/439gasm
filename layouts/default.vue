@@ -1,136 +1,6 @@
 <template>
   <div>
-    <div class="header">
-      <div class="header-center">
-        <img
-          src="~assets/logo.png"
-          alt=""
-          class="header-img"
-        >
-        <el-header>
-          <el-menu
-            :default-active="activeIndex"
-            class="el-menu-demo"
-            mode="horizontal"
-            background-color="#0a1220"
-            text-color="#fff"
-            active-text-color="#fff"
-            @select="handleSelect"
-          >
-            <el-menu-item index="1">
-              <nuxt-link
-                :to="$i18n.path('')"
-                exact
-              >
-                {{$t('links.home')}}
-              </nuxt-link>
-            </el-menu-item>
-            <template v-if="$store.state.islogin">
-              <el-submenu index="2">
-                <template slot="title">
-                  <a href="javascript:;">
-                    {{$t('links.trade')}}
-                  </a>
-                </template>
-                <el-menu-item index="2-1">
-                  <nuxt-link :to="$i18n.path('trade1')">
-                    {{$t('links.hall')}}
-                  </nuxt-link>
-                </el-menu-item>
-                <el-menu-item index="2-2">
-                  <nuxt-link :to="$i18n.path('trade2')">
-                    {{$t('links.details')}}
-                  </nuxt-link>
-                </el-menu-item>
-                <el-menu-item index="2-3">
-                  <nuxt-link :to="$i18n.path('trade3')">
-                    {{$t('links.hangout')}}
-                  </nuxt-link>
-                </el-menu-item>
-              </el-submenu>
-              <el-menu-item index="3">
-                <nuxt-link :to="$i18n.path('browser')">
-                  {{$t('links.browser')}}
-                </nuxt-link>
-              </el-menu-item>
-              <el-menu-item index="4">
-                <nuxt-link :to="$i18n.path('friend')">
-                  {{$t('links.friends')}}
-                </nuxt-link>
-              </el-menu-item>
-              <el-submenu
-                index="6"
-                style="float:right;"
-              >
-                <template slot="title">
-                  16366644423
-                </template>
-                <el-menu-item index="6-1">
-                  <nuxt-link :to="$i18n.path('person')">
-                    {{$t('links.person')}}
-                  </nuxt-link>
-                </el-menu-item>
-                <el-menu-item index="6-2">
-                  {{$t('links.signout')}}
-                </el-menu-item>
-              </el-submenu>
-            </template>
-            <el-submenu
-              index="5"
-              style="float:right;"
-            >
-              <template slot="title">
-                {{title}}
-              </template>
-              <el-menu-item
-                index="5-1"
-                v-if="$i18n.locale === 'en'"
-              >
-                <nuxt-link
-                  :to="`/tc`+$route.fullPath"
-                  active-class="none"
-                  exact
-                >
-                  {{$t('links.chinese')}}
-                </nuxt-link>
-              </el-menu-item>
-              <el-menu-item
-                index="5-2"
-                v-else
-              >
-                <nuxt-link
-                  :to="$route.fullPath.replace(/^\/[^\/]+/, '')"
-                  active-class="none"
-                  exact
-                >
-                  {{$t('links.english')}}
-                </nuxt-link>
-              </el-menu-item>
-            </el-submenu>
-            <template v-if="!$store.state.islogin">
-              <el-submenu
-                index="7"
-                style="float:right;"
-              >
-                <template slot="title">
-                  {{$t('links.lorr')}}
-                </template>
-                <el-menu-item index="7-1">
-                  <nuxt-link :to="$i18n.path('login')">
-                    {{$t('links.login')}}
-                  </nuxt-link>
-                </el-menu-item>
-                <el-menu-item index="7-2">
-                  <nuxt-link :to="$i18n.path('register')">
-                    {{$t('links.register')}}
-                  </nuxt-link>
-                </el-menu-item>
-              </el-submenu>
-            </template>
-          </el-menu>
-        </el-header>
-      </div>
-    </div>
+    <headtop color="#000" />
     <div class="carousel">
       <el-carousel
         :interval="5000"
@@ -209,27 +79,31 @@
 </template>
 
 <script>
+import headtop from '~/components/headtop';
 import axios from 'axios';
 export default {
   data() {
     return {
-      activeIndex: '0',
-      title: 'english',
       bg: []
     }
   },
   created() {
     this.getAd();
   },
+  mounted() {
+    //在页面加载时读取sessionStorage里的状态信息
+    if (window.localStorage.getItem("store")) {
+      this.$store.replaceState(Object.assign({}, this.$store.state, JSON.parse(localStorage.getItem("store"))))
+    }
+    //在页面刷新时将vuex里的信息保存到sessionStorage里
+    window.addEventListener("beforeunload", () => {
+      localStorage.setItem("store", JSON.stringify(this.$store.state))
+    })
+  },
+  components: {
+    headtop
+  },
   methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
-      if (key == '5-1') {
-        this.title = 'english';
-      } else if (key == '5-2') {
-        this.title = '繁體中文';
-      }
-    },
     getAd() {
       axios.post('http://127.0.0.1:3000/api/Login/getad').then(res => {
         // console.log(res);
@@ -245,6 +119,7 @@ export default {
       })
   }, */
 }
+
 </script>
 <style>
 html {
@@ -284,8 +159,7 @@ a:hover {
   align-items: center;
 }
 .el-header {
-  padding: 0;
-  margin-left: 100px;
+  padding: 0 0 0 100px;
   flex-grow: 1;
 }
 .header-img {
@@ -347,5 +221,12 @@ a:hover {
 }
 .space_between p {
   line-height: 25px;
+}
+.el-menu-item a {
+  display: inline-block;
+  width: 100%;
+}
+.el-menu.el-menu--horizontal {
+  border-bottom: 0;
 }
 </style>

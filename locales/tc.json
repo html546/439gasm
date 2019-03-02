@@ -32,5 +32,11 @@
         "cn_name": "中文名",
         "coin_gain": "涨幅",
         "logo": "图片logo"
+    },
+    "login": {
+        "account": "賬號登錄",
+        "username": "用戶名",
+        "pass": "密碼",
+        "submit": "登錄"
     }
 }
