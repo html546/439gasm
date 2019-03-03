@@ -152,6 +152,9 @@ export default {
       title: 'english',
     }
   },
+  created() {
+    console.log(this.$store.state);
+  },
   methods: {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
@@ -162,7 +165,8 @@ export default {
       }
     },
     handleExit() {
-      this.$store.commit('clearLogin');
+      this.$store.dispatch('clearLogin');
+      this.$store.dispatch('clearMessage');
     }
   },
 }

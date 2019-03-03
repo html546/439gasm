@@ -30,6 +30,7 @@
 </template>
 
 <script>
+
 import axios from 'axios';
 export default {
   layout: 'lorr',
@@ -47,13 +48,32 @@ export default {
       }).then(res => {
         console.log(res);
         if (res.data.status == 1) {
-          /* this.$router.push({
-            path: '/'
-          }) */
-          this.$store.commit('setLogin');
+          var that = this;
+          async function notify() {
+            await that.$store.dispatch('setLogin');
+            await that.$store.dispatch('setMessage', {
+              userid: res.data.result.id,
+              sessionid: res.data.result.sessionid,
+              username: res.data.result.username
+            });
+            return res.data.msg;
+          }
+          notify().then((message) => {
+            that.$notify({
+              title: "成功",
+              message: message,
+              type: 'success',
+              onClose: this.onclose()
+            })
+          })
         }
       }).catch(err => {
         console.log(err);
+      })
+    },
+    onclose() {
+      this.$router.push({
+        path: '/'
       })
     }
   },
@@ -109,7 +129,9 @@ export default {
 .login_form label {
   color: #fff;
   font-size: 20px;
-  width: 60px;
+  width: 100px;
+  text-align: right;
+  display: inline-block;
 }
 .login_form input:focus {
   outline: none;

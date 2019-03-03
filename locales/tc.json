@@ -9,18 +9,18 @@
         "hangout": "交易掛出",
         "browser": "區塊鏈瀏覽器",
         "friends": "推薦好友",
-        "link": "合作链接",
-        "about": "关于我们",
-        "legal": "法律声明",
-        "tel": "固定电话",
-        "email": "电子邮箱",
+        "link": "合作鏈接",
+        "about": "關於我們",
+        "legal": "法律聲明",
+        "tel": "固定電話",
+        "email": "電子郵箱",
         "address": "公司地址",
-        "follow": "扫一扫关注",
-        "login": "登录",
-        "lorr": "登录/注册",
-        "register": "注册",
+        "follow": "掃一掃關注",
+        "login": "登錄",
+        "lorr": "登錄/註冊",
+        "register": "註冊",
         "signout": "退出",
-        "person": "个人中心"
+        "person": "個人中心"
     },
     "home": {
         "android": "Android客戶端下載",
@@ -38,5 +38,10 @@
         "username": "用戶名",
         "pass": "密碼",
         "submit": "登錄"
+    },
+    "register": {
+        "mobile": "手機號註冊",
+        "email": "郵箱註冊",
+        "register": "註冊"
     }
 }

@@ -38,5 +38,10 @@
         "username": "username",
         "pass": "password",
         "submit": "submit"
+    },
+    "register": {
+        "mobile": "mobile register",
+        "email": "mailbox register",
+        "register":"register"
     }
 }
