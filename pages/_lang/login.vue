@@ -30,7 +30,6 @@
 </template>
 
 <script>
-
 import axios from 'axios';
 export default {
   layout: 'lorr',
@@ -80,19 +79,26 @@ export default {
 }
 </script>
 <style>
-.login {
+body,
+html {
   width: 100%;
   height: 100%;
+  background-image: url("~assets/bg.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 .login_panel {
   width: 1200px;
   margin: 0 auto;
   height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 .login_panel_right {
   width: 470px;
   height: 530px;
-  float: right;
   background: rgba(0, 0, 0, 0.4);
   margin-top: 120px;
   border-radius: 15px;

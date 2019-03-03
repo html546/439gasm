@@ -1,7 +1,7 @@
 <template>
   <div>
     <headtop color="#000" />
-    <nuxt />
+    <nuxt style="height:100%;" />
   </div>
 </template>
 
@@ -25,12 +25,8 @@ export default {
 </script>
 
 <style>
-html,
-body {
-  background-image: url("~assets/bg.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+body,
+html {
   width: 100%;
   height: 100%;
 }

@@ -5,88 +5,124 @@
         <div class="button_group">
           <el-row :gutter="40">
             <el-col :span="12">
-              <button>{{$t('register.mobile')}}</button>
+              <button
+                :class="{active:isActive}"
+                @click="handleActive"
+              >{{$t('register.mobile')}}</button>
             </el-col>
             <el-col :span="12">
-              <button>{{$t('register.email')}}</button>
+              <button
+                :class="{active:!isActive}"
+                @click="handleActive1"
+              >{{$t('register.email')}}</button>
             </el-col>
           </el-row>
         </div>
-        <div
-          class="register_form"
-          v-for="(val,key) in regdata"
-          :key="key"
-        >
-          <label for="">{{val.name}}</label>
-          <input
-            :name="key"
-            type="text"
-            v-if="val.input!=='hidden'&&val.input!=='select'"
-            v-model="val.default"
+        <form @submit="handleSubmit">
+          <div
+            class="register_form"
+            v-for="(val,key) in regdata"
+            :key="key"
           >
-          <select
-            :name="key"
-            id=""
-            v-else-if="val.input=='select'&&key!=='bank_name'"
-            v-model="val.default"
-          >
-            <option
-              v-for="(val1,key1) in val.select"
-              :key="key1"
-              :value="key1"
-            >{{val1}}</option>
-          </select>
-          <select
-            :name="key"
-            v-else-if="val.input=='select'&&key=='bank_name'"
-            v-model="val.default"
-          >
-            <option
-              v-for="item in banks"
-              :value="item.id"
-              :key="item.id"
+            <label for="">{{val.name}}</label>
+            <input
+              :name="key"
+              type="text"
+              v-if="val.input!=='hidden'&&val.input!=='select'&&key!=='mobile_phone'"
+              v-model="val.default"
             >
-              {{item.bank_names}}
-            </option>
-          </select>
-        </div>
-        <div class="register_form">
-          <label for="">登錄密碼</label>
-          <input
-            type="password"
-            v-model="pass1"
-            name="pass1"
-          >
-        </div>
-        <div class="register_form">
-          <label for="">確認登錄密碼</label>
-          <input
-            type="password"
-            v-model="pass1c"
-            name="pass1c"
-          >
-        </div>
-        <div class="register_form">
-          <label for="">支付密碼</label>
-          <input
-            type="password"
-            v-model="pass2"
-            name="pass2"
-          >
-        </div>
-        <div class="register_form">
-          <label for="">確認支付密碼</label>
-          <input
-            type="password"
-            v-model="pass2c"
-            name="pass2c"
-          >
-        </div>
-        <button
-          class="register_btn1"
-          type="submit"
-          @click="handleSubmit"
-        >{{$t('register.register')}}</button>
+            <input
+              type="text"
+              :name="key"
+              v-if="key == 'mobile_phone'"
+              v-model="mobile"
+            >
+            <select
+              :name="key"
+              v-else-if="val.input=='select'&&key!=='bank_name'"
+              v-model="val.default"
+            >
+              <option
+                v-for="(val1,key1) in val.select"
+                :key="key1"
+                :value="key1"
+              >{{val1}}</option>
+            </select>
+            <select
+              :name="key"
+              v-else-if="val.input=='select'&&key=='bank_name'"
+              v-model="val.default"
+            >
+              <option
+                v-for="item in banks"
+                :value="item.id"
+                :key="item.id"
+              >
+                {{item.bank_names}}
+              </option>
+            </select>
+          </div>
+          <div class="register_form captcha">
+            <label for="">圖形驗證碼</label>
+            <input
+              type="text"
+              v-model="verify_code"
+            >
+            <img
+              :src="imageUrl"
+              @click="getVerifyCode"
+              alt=""
+            >
+          </div>
+          <div class="register_form mobile_code">
+            <label for="">驗證碼</label>
+            <input
+              type="text"
+              name="mobile_code"
+            >
+            <el-button
+              type="text"
+              @click="getverify"
+              :disabled="disabled"
+            >{{name}}</el-button>
+          </div>
+          <div class="register_form">
+            <label for="">登錄密碼</label>
+            <input
+              type="password"
+              v-model="pass1"
+              name="pass1"
+            >
+          </div>
+          <div class="register_form">
+            <label for="">確認登錄密碼</label>
+            <input
+              type="password"
+              v-model="pass1c"
+              name="pass1c"
+            >
+          </div>
+          <div class="register_form">
+            <label for="">支付密碼</label>
+            <input
+              type="password"
+              v-model="pass2"
+              name="pass2"
+            >
+          </div>
+          <div class="register_form">
+            <label for="">確認支付密碼</label>
+            <input
+              type="password"
+              v-model="pass2c"
+              name="pass2c"
+            >
+          </div>
+          <button
+            class="register_btn1"
+            type="submit"
+          >{{$t('register.register')}}</button>
+        </form>
       </div>
     </div>
   </div>
@@ -100,56 +136,151 @@ export default {
     return {
       regdata: {},
       banks: [],
+      isActive: true,
       pass1: '',
       pass1c: '',
       pass2: '',
       pass2c: '',
+      mobile: '',
+      imageUrl: '',
+      encrypt_code: '',
+      verify_code: '',
+      name: '獲取驗證碼',
+      disabled: false,
+      statetype: 1,
+      username: ''
     }
   },
   created() {
     console.log(this.$store.state.locale);
-    axios.post('/api/webmember/register').then(res => {
-      // console.log(res);
-      this.regdata = res.data.data.regdatasets;
-    }).catch(err => {
-      console.log(err);
-    })
-    this.getBanks(1);
+    this.getRegData(this.statetype);
+    this.getBanks();
+    this.getVerifyCode();
   },
   methods: {
-    handleSubmit() {
-
+    getVerifyCode() {
+      axios.post('/api/login/getVerifyCode').then(res => {
+        // console.log(res);
+        this.imageUrl = res.data.image;
+        this.encrypt_code = res.data.encryptCode;
+      }).catch(err => {
+        console.log(err);
+      })
     },
-    getBanks(statetype) {
-      axios.post('/api/webmember/getbanks', {
+    getRegData(statetype) {
+      axios.post('/api/webmember/register', {
         statetype: statetype
       }).then(res => {
-        // console.log(res);
+        console.log(res);
+        this.regdata = res.data.data.regdatasets;
+        this.username = res.data.data.defaultname;
+      }).catch(err => {
+        console.log(err);
+      })
+    },
+    handleSubmit(e) {
+      e.preventDefault();
+      var formdata = new FormData();
+      console.log(e.target.length);
+      for (let i = 0; i < e.target.length; i++) {
+        formdata.append(e.target[i].name, e.target[i].value);
+      }
+      formdata.append('statetype', this.statetype);
+      formdata.append('username', this.username);
+      axios.post('/api/webmember/registersave',
+        formdata
+      ).then(res => {
+        console.log(res);
+      }).catch(err => {
+        console.log(err);
+      })
+      /* axios.post({
+        method: 'post',
+        url: '/api/webmember/registersave',
+        data: formdata
+      }).then(res => {
+        console.log(res);
+      }).catch(err => {
+        console.log(err);
+      }) */
+    },
+    handleActive() {
+      this.isActive = true;
+      this.statetype = 1;
+      this.getRegData(1);
+    },
+    handleActive1() {
+      this.isActive = false;
+      this.statetype = 2;
+      this.getRegData(2);
+    },
+    getBanks() {
+      axios.post('/api/webmember/getbanks').then(res => {
         this.banks = res.data.data;
       }).catch(err => {
         console.log(err);
       })
+    },
+    getverify() {
+      axios.post('/api/login/verify', {
+        verify_code: this.verify_code,
+        encrypt_code: this.encrypt_code,
+        mobile_phone: this.mobile
+      }).then(res => {
+        if (res.data.status == 1) {
+          this.$message({
+            message: res.data.msg,
+            type: 'success',
+            showClose: true,
+            onClose: this.onclose()
+          })
+        } else {
+          this.$message({
+            message: res.data.msg,
+            type: 'danger',
+            showClose: true
+          })
+        }
+      }).catch(err => {
+        console.log(err);
+      })
+    },
+    onclose() {
+      let i = 60;
+      let timer = setInterval(() => {
+        i--;
+        if (i > 0) {
+          this.name = `${i}s`;
+          this.disabled = true;
+        } else {
+          this.name = '重新獲取';
+          this.disabled = false;
+          clearInterval(timer);
+        }
+      }, 1000);
     }
   },
 }
 </script>
 <style>
-body {
-  background-repeat: repeat-y;
-}
 .register {
   width: 100%;
   height: 100%;
+  background: url(~assets/bg.png) no-repeat center center;
+  background-size: cover;
 }
 .register_panel {
   width: 1200px;
   margin: 0 auto;
   height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 .register_panel_right {
   width: 470px;
   height: auto;
-  float: right;
+  /* float: right; */
   background: rgba(0, 0, 0, 0.4);
   margin-top: 60px;
   border-radius: 15px;
@@ -157,11 +288,6 @@ body {
   flex-direction: column;
   align-items: center;
 }
-/* .button_group {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-} */
 .button_group button {
   width: 165px;
   height: 40px;
@@ -172,6 +298,7 @@ body {
   margin-top: 15px;
   cursor: pointer;
 }
+.button_group button.active,
 .button_group button:hover {
   background: #6f9feb;
   color: #fff;
@@ -194,6 +321,20 @@ body {
   line-height: 40px;
   border-bottom: 1px solid #7986a3;
 }
+.mobile_code input,
+.captcha input {
+  width: 160px;
+}
+.captcha img {
+  width: 80px;
+  height: 40px;
+  position: relative;
+  top: 10px;
+}
+.mobile_code .el-button {
+  width: 80px;
+  height: 40px;
+}
 .register_form select:focus {
   outline: none;
 }
@@ -210,7 +351,7 @@ body {
 .register_form label {
   color: #fff;
   font-size: 20px;
-  width: 100px;
+  width: 120px;
   text-align: right;
   display: inline-block;
 }
@@ -224,7 +365,7 @@ body {
   color: #fff;
   border: none;
   border-radius: 20px;
-  margin: 20px 0 10px;
+  margin: 20px 0 85px;
   cursor: pointer;
 }
 .register_btn1:focus {
