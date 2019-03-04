@@ -63,7 +63,7 @@
             </select>
           </div>
           <div class="register_form captcha">
-            <label for="">圖形驗證碼</label>
+            <label for="">{{$t('register.Captcha')}}</label>
             <input
               type="text"
               v-model="verify_code"
@@ -75,7 +75,7 @@
             >
           </div>
           <div class="register_form mobile_code">
-            <label for="">驗證碼</label>
+            <label for="">{{$t('register.code')}}</label>
             <input
               type="text"
               name="mobile_code"
@@ -87,7 +87,7 @@
             >{{name}}</el-button>
           </div>
           <div class="register_form">
-            <label for="">登錄密碼</label>
+            <label for="">{{$t('register.loginpass')}}</label>
             <input
               type="password"
               v-model="pass1"
@@ -95,7 +95,7 @@
             >
           </div>
           <div class="register_form">
-            <label for="">確認登錄密碼</label>
+            <label for="">{{$t('register.loginpass1')}}</label>
             <input
               type="password"
               v-model="pass1c"
@@ -103,7 +103,7 @@
             >
           </div>
           <div class="register_form">
-            <label for="">支付密碼</label>
+            <label for="">{{$t('register.paypass')}}</label>
             <input
               type="password"
               v-model="pass2"
@@ -111,7 +111,7 @@
             >
           </div>
           <div class="register_form">
-            <label for="">確認支付密碼</label>
+            <label for="">{{$t('register.paypass1')}}</label>
             <input
               type="password"
               v-model="pass2c"
@@ -122,6 +122,29 @@
             class="register_btn1"
             type="submit"
           >{{$t('register.register')}}</button>
+          <el-row
+            type="flex"
+            justify="space-around"
+            class="footer_links"
+          >
+            <el-col :span="12">
+              <el-button type="text">
+                <nuxt-link :to="$i18n.path('forget')">
+                  {{$t('register.forget')}}
+                </nuxt-link>
+              </el-button>
+            </el-col>
+            <el-col :span="12">
+              <el-button type="text">
+                <nuxt-link
+                  :to="$i18n.path('login')"
+                  class="link_blue"
+                >
+                  {{$t('register.login')}}
+                </nuxt-link>
+              </el-button>
+            </el-col>
+          </el-row>
         </form>
       </div>
     </div>
@@ -145,7 +168,7 @@ export default {
       imageUrl: '',
       encrypt_code: '',
       verify_code: '',
-      name: '獲取驗證碼',
+      name: this.$t('register.getcode'),
       disabled: false,
       statetype: 1,
       username: ''
@@ -253,7 +276,7 @@ export default {
           this.name = `${i}s`;
           this.disabled = true;
         } else {
-          this.name = '重新獲取';
+          this.name = this.$t('register.retrieve');
           this.disabled = false;
           clearInterval(timer);
         }
@@ -287,6 +310,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 50px;
 }
 .button_group button {
   width: 165px;
@@ -295,7 +319,7 @@ export default {
   border-radius: 20px;
   color: #6f9feb;
   border: 1px solid #6f9feb;
-  margin-top: 15px;
+  margin-top: 60px;
   cursor: pointer;
 }
 .button_group button.active,
@@ -359,16 +383,21 @@ export default {
   outline: none;
 }
 .register_btn1 {
-  width: 350px;
+  width: 370px;
   height: 45px;
   background: linear-gradient(to right, #5872e1, #7cbbf1);
   color: #fff;
   border: none;
   border-radius: 20px;
-  margin: 20px 0 85px;
+  margin: 20px 0 0px;
   cursor: pointer;
 }
 .register_btn1:focus {
   outline: none;
+}
+.footer_links {
+  width: 370px;
+  height: auto;
+  text-align: center;
 }
 </style>

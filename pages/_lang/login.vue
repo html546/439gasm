@@ -24,6 +24,29 @@
           type="submit"
           @click="handleSubmit"
         >{{$t('login.submit')}}</button>
+        <el-row
+          type="flex"
+          justify="space-around"
+          class="footer_links"
+        >
+          <el-col :span="12">
+            <el-button type="text">
+              <nuxt-link :to="$i18n.path('forget')">
+                {{$t('login.forget')}}
+              </nuxt-link>
+            </el-button>
+          </el-col>
+          <el-col :span="12">
+            <el-button type="text">
+              <nuxt-link
+                :to="$i18n.path('register')"
+                class="link_blue"
+              >
+                {{$t('login.register')}}
+              </nuxt-link>
+            </el-button>
+          </el-col>
+        </el-row>
       </div>
     </div>
   </div>
@@ -154,5 +177,16 @@ html {
 }
 .login_btn1:focus {
   outline: none;
+}
+.footer_links {
+  width: 350px;
+  height: auto;
+  text-align: center;
+}
+.link_blue {
+  color: #7abbf3;
+}
+.link_blue:hover {
+  color: #7abbf3;
 }
 </style>

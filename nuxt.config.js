@@ -72,7 +72,7 @@ module.exports = {
     middleware: 'i18n'
   },
   generate: {
-    routes: ['/', '/trade1', '/trade2', '/login', '/register', '/browser', '/friend', '/person', '/tc', '/tc/trade1', '/tc/trade2', '/tc/login', '/tc/register', '/tc/browser', '/tc/friend', '/tc/person']
+    routes: ['/', '/trade1', '/trade2', '/login', '/register', '/forget', '/browser', '/friend', '/person', '/tc', '/tc/trade1', '/tc/trade2', '/tc/login', '/tc/register', '/tc/forget', '/tc/browser', '/tc/friend', '/tc/person']
   },
   proxy: {
     '/api': "http://t439.shangtua.com:88/"

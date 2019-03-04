@@ -37,11 +37,33 @@
         "account": "Account login",
         "username": "username",
         "pass": "password",
-        "submit": "submit"
+        "submit": "submit",
+        "forget": "forget password",
+        "register": "Immediate registration"
     },
     "register": {
         "mobile": "mobile register",
         "email": "mailbox register",
-        "register":"register"
+        "register": "register",
+        "Captcha": "Captcha",
+        "code": "identifying code",
+        "getcode": "Get identifying code",
+        "retrieve": "retrieve",
+        "loginpass": "Login password",
+        "loginpass1": "Confirm the login password",
+        "paypass": "Payment password",
+        "paypass1": "Confirm payment password",
+        "forget": "forget password",
+        "login": "Immediate landing"
+    },
+    "forget": {
+        "mobile": "Mobile phone retrieved",
+        "login": "Immediate landing",
+        "register": "Immediate registration",
+        "email": "Mailbox retrieve",
+        "member": "member ID",
+        "mobile_code": "phone number",
+        "getback": "Retrieve immediately",
+        "email_code": "mailbox"
     }
 }

@@ -37,11 +37,33 @@
         "account": "賬號登錄",
         "username": "用戶名",
         "pass": "密碼",
-        "submit": "登錄"
+        "submit": "登錄",
+        "forget": "忘記密碼",
+        "register": "立即註冊"
     },
     "register": {
         "mobile": "手機號註冊",
         "email": "郵箱註冊",
-        "register": "註冊"
+        "register": "註冊",
+        "Captcha": "圖形驗證碼",
+        "code": "驗證碼",
+        "getcode": "獲取驗證碼",
+        "retrieve": "重新獲取",
+        "loginpass": "登錄密碼",
+        "loginpass1": "確認登錄密碼",
+        "paypass": "支付密碼",
+        "paypass1": "確認支付密碼",
+        "forget": "忘記密碼",
+        "login": "立即登錄"
+    },
+    "forget": {
+        "mobile": "手機找回",
+        "login": "立即登錄",
+        "register": "立即註冊",
+        "email": "郵箱找回",
+        "member": "會員編號",
+        "mobile_code": "手機號",
+        "getback": "立即找回",
+        "email_code":"郵箱"
     }
 }

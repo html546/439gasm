@@ -94,6 +94,7 @@
               <el-menu-item
                 index="5-1"
                 v-if="$i18n.locale === 'en'"
+                @click="toTc"
               >
                 <nuxt-link
                   :to="`/tc`+$route.fullPath"
@@ -106,6 +107,7 @@
               <el-menu-item
                 index="5-2"
                 v-else
+                @click="toEn"
               >
                 <nuxt-link
                   :to="$route.fullPath.replace(/^\/[^\/]+/, '')"
@@ -144,6 +146,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   props: ['color', 'opacity'],
   data() {
@@ -167,6 +170,26 @@ export default {
     handleExit() {
       this.$store.dispatch('clearLogin');
       this.$store.dispatch('clearMessage');
+    },
+    toTc() {
+      console.log('toTc');
+      axios.post('/api/Login/language', {
+        lang: 'tw'
+      }).then(res => {
+        console.log(res);
+      }).catch(err => {
+        console.log(err);
+      })
+    },
+    toEn() {
+      console.log('toEn');
+      axios.post('/api/Login/language', {
+        lang: 'en'
+      }).then(res => {
+        console.log(res);
+      }).catch(err => {
+        console.log(err);
+      })
     }
   },
 }
