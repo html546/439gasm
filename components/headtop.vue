@@ -31,7 +31,7 @@
                 {{$t('links.home')}}
               </nuxt-link>
             </el-menu-item>
-            <template v-if="$store.state.islogin">
+            <template v-if="isActive">
               <el-submenu index="2">
                 <template slot="title">
                   <a href="javascript:;">
@@ -118,7 +118,7 @@
                 </nuxt-link>
               </el-menu-item>
             </el-submenu>
-            <template v-if="!$store.state.islogin">
+            <template v-if="!isActive">
               <el-submenu
                 index="7"
                 style="float:right;"
@@ -156,7 +156,16 @@ export default {
     }
   },
   created() {
-    console.log(this.$store.state);
+    console.log(this.$store.state, 111111);
+  },
+  computed: {
+    isActive() {
+      if (this.$store.state.message == null || Object.keys(this.$store.state.message).length == 0) {
+        return false;
+      } else {
+        return true;
+      }
+    }
   },
   methods: {
     handleSelect(key, keyPath) {
@@ -168,7 +177,6 @@ export default {
       }
     },
     handleExit() {
-      this.$store.dispatch('clearLogin');
       this.$store.dispatch('clearMessage');
     },
     toTc() {

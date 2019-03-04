@@ -134,15 +134,7 @@ export default {
 </script>
 
 <style >
-body,
-html {
-  width: 100%;
-  height: 100%;
-  background-image: url("~assets/bg.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-}
+
 .forget_panel {
   width: 1200px;
   margin: 0 auto;

@@ -38,7 +38,6 @@
         <el-table
           :data="post"
           :border="true"
-          :stripe="true"
         >
           <el-table-column
             prop="name"

@@ -1,7 +1,7 @@
 export const state = () => ({
     locales: ['en', 'tc'],
     locale: 'en',
-    islogin: false,
+    // islogin: false,
     message: {}
 })
 
@@ -11,12 +11,12 @@ export const mutations = {
             state.locale = locale;
         }
     },
-    setLogin(state) {
+    /* setLogin(state) {
         state.islogin = true;
     },
     clearLogin(state) {
         state.islogin = false;
-    },
+    }, */
     setMessage(state, message) {
         state.message = message;
     },
@@ -29,12 +29,12 @@ export const actions = {
     setMessage({ commit }, message) {
         commit('setMessage', message)
     },
-    setLogin({ commit }) {
+    /* setLogin({ commit }) {
         commit('setLogin');
     },
     clearLogin({ commit }) {
         commit('clearLogin');
-    },
+    }, */
     clearMessage({ commit }) {
         commit('clearMessage');
     }

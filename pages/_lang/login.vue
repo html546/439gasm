@@ -72,7 +72,7 @@ export default {
         if (res.data.status == 1) {
           var that = this;
           async function notify() {
-            await that.$store.dispatch('setLogin');
+            // await that.$store.dispatch('setLogin');
             await that.$store.dispatch('setMessage', {
               userid: res.data.result.id,
               sessionid: res.data.result.sessionid,
@@ -88,6 +88,12 @@ export default {
               onClose: this.onclose()
             })
           })
+        } else {
+          this.$notify({
+            title: "失敗",
+            message: res.data.msg,
+            type: 'error'
+          })
         }
       }).catch(err => {
         console.log(err);
@@ -102,15 +108,6 @@ export default {
 }
 </script>
 <style>
-body,
-html {
-  width: 100%;
-  height: 100%;
-  background-image: url("~assets/bg.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-}
 .login_panel {
   width: 1200px;
   margin: 0 auto;
