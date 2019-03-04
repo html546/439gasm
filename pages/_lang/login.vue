@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div>
     <div class="login_panel">
       <div class="login_panel_right">
         <div class="button_group">

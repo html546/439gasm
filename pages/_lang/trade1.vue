@@ -6,6 +6,10 @@
           <el-table
             :data="tableData"
             :border="true"
+            v-loading="loading1"
+            element-loading-text="拼命加载中"
+            element-loading-spinner="el-icon-loading"
+            element-loading-background="rgba(0, 0, 0, 0.8)"
           >
             <el-table-column
               label="掛單時間"
@@ -13,7 +17,7 @@
             >
               <template slot-scope="scope">
                 <div>
-                  {{scope.row.time | timefilter}}
+                  {{scope.row.time |timefilter }}
                 </div>
               </template>
             </el-table-column>
@@ -55,6 +59,8 @@
             @prev-click="handlePrevClick"
             @current-change="handleChange"
             @next-click="handleNextClick"
+            background
+            :current-page.sync="currentPage1"
           >
           </el-pagination>
         </el-col>
@@ -62,6 +68,10 @@
           <el-table
             :data="tableData1"
             :border="true"
+            v-loading="loading2"
+            element-loading-text="拼命加载中"
+            element-loading-spinner="el-icon-loading"
+            element-loading-background="rgba(0, 0, 0, 0.8)"
           >
             <el-table-column
               label="掛單時間"
@@ -107,10 +117,12 @@
           <el-pagination
             layout="prev,pager,next"
             :total="total1"
+            background
             style="text-align:center;margin-top:20px;"
             @prev-click="handlePrevClick1"
             @current-change="handleChange1"
             @next-click="handleNextClick1"
+            :current-page.sync="currentPage2"
           ></el-pagination>
         </el-col>
       </el-row>
@@ -129,27 +141,47 @@ export default {
       tableData1: [],
       total: 0,
       total1: 0,
+      currentPage1: 1,
+      currentPage2: 1,
+      loading1: true,
+      loading2: true
     }
   },
   created() {
-    console.log(this.$store.state);
+    let page1 = this.$store.state.page1;
+    let page2 = this.$store.state.page2;
+    if (page1) {
+      this.currentPage1 = Number(page1);
+      this.getData(page1, 1);
+    } else {
+      this.getData(1, 1);
+    }
+    if (page2) {
+      this.currentPage2 = Number(page2);
+      this.getData(page2, 2);
+    } else {
+      this.getData(1, 2);
+    }
   },
   mounted() {
-    this.getData(1, 1);
-    this.getData(1, 2);
   },
   methods: {
     getData(page, type) {
+      console.log(this.$store.state);
+      // var message = JSON.parse(localStorage.getItem('store'));
+      var message = this.$store.state.message;
+      console.log(message, 333333);
       axios.post('/api/trade/index', {
-        userid: this.$store.state.message.userid,
-        sessionid: this.$store.state.message.sessionid,
+        userid: message.userid,
+        sessionid: message.sessionid,
         page: page,
         tradetype: type
       }).then(res => {
-        console.log(res);
         if (type == 1) {
+          this.loading1 = false;
           this.tableData = res.data.data.trades.data;
         } else if (type == 2) {
+          this.loading2 = false;
           this.tableData1 = res.data.data.trades.data;
         }
       }).catch(err => {
@@ -157,26 +189,32 @@ export default {
       })
     },
     handlePrevClick(val) {
+      this.loading1 = true;
       this.getData(val, 1);
       this.$store.state.commit('SET_PAGE', val);
     },
     handleNextClick(val) {
+      this.loading1 = true;
       this.getData(val, 1);
       this.$store.state.commit('SET_PAGE', val);
     },
     handleChange(val) {
+      this.loading1 = true;
       this.getData(val, 1);
       this.$store.state.commit('SET_PAGE', val);
     },
     handlePrevClick1(val) {
+      this.loading2 = true;
       this.getData(val, 2);
       this.$store.state.commit('SET_PAGE2', val);
     },
     handleNextClick1(val) {
+      this.loading2 = true;
       this.getData(val, 2);
       this.$store.state.commit('SET_PAGE2', val);
     },
     handleChange1(val) {
+      this.loading2 = true;
       this.getData(val, 2);
       this.$store.state.commit('SET_PAGE2', val);
     },
