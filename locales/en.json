@@ -65,5 +65,27 @@
         "mobile_code": "phone number",
         "getback": "Retrieve immediately",
         "email_code": "mailbox"
+    },
+    "trade1": {
+        "time": "List time",
+        "number": "User ID",
+        "num": "number",
+        "oneprice": "Unit Price",
+        "trust": "trust-level",
+        "operate": "operation",
+        "purchase": "Purchase",
+        "sell": "Sell out",
+        "loading": "Desperately Loading"
+    },
+    "trade2": {
+        "detail": "Transaction details",
+        "record_id": "Record ID",
+        "number": "User ID",
+        "num": "trading capacity",
+        "oneprice": "Unit Price",
+        "total": "Total",
+        "time": "Closing time",
+        "fee": "Service Charge",
+        "pay":"Actual payment"
     }
 }

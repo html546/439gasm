@@ -64,6 +64,28 @@
         "member": "會員編號",
         "mobile_code": "手機號",
         "getback": "立即找回",
-        "email_code":"郵箱"
+        "email_code": "郵箱"
+    },
+    "trade1": {
+        "time": "掛單時間",
+        "number": "用戶編號",
+        "num": "交易數量",
+        "oneprice": "單價",
+        "trust": "信譽級別",
+        "operate": "操作",
+        "purchase": "買入",
+        "sell": "賣出",
+        "loading": "拼命加載中"
+    },
+    "trade2": {
+        "detail": "交易明細",
+        "record_id": "記錄ID",
+        "number": "用戶編號",
+        "num": "交易數量",
+        "oneprice": "單價",
+        "total": "總額",
+        "time": "成交時間",
+        "fee": "手續費",
+        "pay": "實付款價格"
     }
 }

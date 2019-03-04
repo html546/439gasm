@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="detail">
-      <h3>交易明細</h3>
+      <h3>{{$t('trade2.detail')}}</h3>
       <p>TRANSACTION DETAILS</p>
       <el-table
         :data="detailData"
@@ -14,23 +14,23 @@
       >
         <el-table-column
           prop="id"
-          label="記錄id"
+          :label="$t('trade2.record_id')"
         ></el-table-column>
         <el-table-column
           prop="username"
-          label="用戶編號"
+          :label="$t('trade2.number')"
         ></el-table-column>
         <el-table-column
           prop="num"
-          label="交易數量"
+          :label="$t('trade2.num')"
         ></el-table-column>
         <el-table-column
           prop="oneprice"
-          label="單價"
+          :label="$t('trade2.oneprice')"
         ></el-table-column>
         <el-table-column
           prop="all"
-          label="總額"
+          :label="$t('trade2.total')"
         >
           <template slot-scope="scope">
             <p>{{scope.row.num* scope.row.oneprice}}</p>
@@ -38,7 +38,7 @@
         </el-table-column>
         <el-table-column
           prop="buytime"
-          label="成交時間"
+          :label="$t('trade2.time')"
         >
           <template slot-scope="scope">
             <p>{{scope.row.buytime | timefilter}}</p>
@@ -46,7 +46,7 @@
         </el-table-column>
         <el-table-column
           prop="fee"
-          label="手續費"
+          :label="$t('trade2.fee')"
         ></el-table-column>
         <el-table-column
           prop="usdtprice"

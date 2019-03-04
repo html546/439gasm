@@ -7,12 +7,12 @@
             :data="tableData"
             :border="true"
             v-loading="loading1"
-            element-loading-text="拼命加载中"
+            :element-loading-text="$t('trade1.loading')"
             element-loading-spinner="el-icon-loading"
             element-loading-background="rgba(0, 0, 0, 0.8)"
           >
             <el-table-column
-              label="掛單時間"
+              :label="$t('trade1.time')"
               prop="time"
             >
               <template slot-scope="scope">
@@ -22,23 +22,23 @@
               </template>
             </el-table-column>
             <el-table-column
-              label="用戶編號"
+              :label="$t('trade1.number')"
               prop="username"
             ></el-table-column>
             <el-table-column
-              label="交易數量"
+              :label="$t('trade1.num')"
               prop="num"
             ></el-table-column>
             <el-table-column
-              label="單價"
+              :label="$t('trade1.oneprice')"
               prop="oneprice"
             ></el-table-column>
             <el-table-column
-              label="信譽級別"
+              :label="$t('trade1.trust')"
               prop="credit"
             ></el-table-column>
             <el-table-column
-              label="操作"
+              :label="$t('trade1.operate')"
               prop="wealth"
             >
               <template slot-scope="scope">
@@ -47,7 +47,7 @@
                     type="primary"
                     size="mini"
                     @click="handleBuy(scope.row,1)"
-                  >買入</el-button>
+                  >{{$t('trade1.purchase')}}</el-button>
                 </div>
               </template>
             </el-table-column>
@@ -69,12 +69,12 @@
             :data="tableData1"
             :border="true"
             v-loading="loading2"
-            element-loading-text="拼命加载中"
+            :element-loading-text="$t('trade1.loading')"
             element-loading-spinner="el-icon-loading"
             element-loading-background="rgba(0, 0, 0, 0.8)"
           >
             <el-table-column
-              label="掛單時間"
+              :label="$t('trade1.time')"
               prop="time"
             >
               <template slot-scope="scope">
@@ -84,23 +84,23 @@
               </template>
             </el-table-column>
             <el-table-column
-              label="用戶編號"
+              :label="$t('trade1.number')"
               prop="username"
             ></el-table-column>
             <el-table-column
-              label="交易數量"
+              :label="$t('trade1.num')"
               prop="num"
             ></el-table-column>
             <el-table-column
-              label="單價"
+              :label="$t('trade1.oneprice')"
               prop="oneprice"
             ></el-table-column>
             <el-table-column
-              label="信譽級別"
+              :label="$t('trade1.trust')"
               prop="credit"
             ></el-table-column>
             <el-table-column
-              label="操作"
+              :label="$t('trade1.operate')"
               prop="wealth"
             >
               <template slot-scope="scope">
@@ -109,7 +109,7 @@
                     type="primary"
                     size="mini"
                     @click="handleBuy(scope.row,2)"
-                  >賣出</el-button>
+                  >{{$t('trade1.sell')}}</el-button>
                 </div>
               </template>
             </el-table-column>
@@ -144,7 +144,7 @@ export default {
       currentPage1: 1,
       currentPage2: 1,
       loading1: true,
-      loading2: true
+      loading2: true,
     }
   },
   created() {
