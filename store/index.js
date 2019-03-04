@@ -2,7 +2,9 @@ export const state = () => ({
     locales: ['en', 'tc'],
     locale: 'en',
     // islogin: false,
-    message: {}
+    message: '',
+    page1: 1,
+    page2: 1
 })
 
 export const mutations = {
@@ -10,6 +12,12 @@ export const mutations = {
         if (state.locales.indexOf(locale) !== -1) {
             state.locale = locale;
         }
+    },
+    SET_PAGE(state, page) {
+        state.page1 = page;
+    },
+    SET_PAGE2(state, page) {
+        state.page2 = page;
     },
     /* setLogin(state) {
         state.islogin = true;
@@ -21,7 +29,7 @@ export const mutations = {
         state.message = message;
     },
     clearMessage(state) {
-        state.message = {};
+        state.message = '';
     }
 }
 

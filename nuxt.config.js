@@ -36,9 +36,7 @@ module.exports = {
   */
   plugins: [
     '@/plugins/element-ui',
-    '~/plugins/i18n',
-    '~/plugins/setMessage',
-    '~/plugins/time',
+    '~/plugins/i18n'
   ],
 
   /*

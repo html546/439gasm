@@ -1,16 +1,12 @@
 <template>
   <div>
     <div class="trade1">
-      <el-row :gutter="45">
+      <el-row :gutter="20">
         <el-col :span="12">
           <el-table
             :data="tableData"
             :border="true"
           >
-            <el-table-column
-              label="訂單"
-              prop="id"
-            ></el-table-column>
             <el-table-column
               label="掛單時間"
               prop="time"
@@ -30,10 +26,6 @@
               prop="num"
             ></el-table-column>
             <el-table-column
-              label="手續費"
-              prop="fee"
-            ></el-table-column>
-            <el-table-column
               label="單價"
               prop="oneprice"
             ></el-table-column>
@@ -41,6 +33,20 @@
               label="信譽級別"
               prop="credit"
             ></el-table-column>
+            <el-table-column
+              label="操作"
+              prop="wealth"
+            >
+              <template slot-scope="scope">
+                <div>
+                  <el-button
+                    type="primary"
+                    size="mini"
+                    @click="handleBuy(scope.row,1)"
+                  >買入</el-button>
+                </div>
+              </template>
+            </el-table-column>
           </el-table>
           <el-pagination
             layout="prev,pager,next"
@@ -58,10 +64,6 @@
             :border="true"
           >
             <el-table-column
-              label="訂單"
-              prop="id"
-            ></el-table-column>
-            <el-table-column
               label="掛單時間"
               prop="time"
             >
@@ -80,10 +82,6 @@
               prop="num"
             ></el-table-column>
             <el-table-column
-              label="手續費"
-              prop="fee"
-            ></el-table-column>
-            <el-table-column
               label="單價"
               prop="oneprice"
             ></el-table-column>
@@ -91,6 +89,20 @@
               label="信譽級別"
               prop="credit"
             ></el-table-column>
+            <el-table-column
+              label="操作"
+              prop="wealth"
+            >
+              <template slot-scope="scope">
+                <div>
+                  <el-button
+                    type="primary"
+                    size="mini"
+                    @click="handleBuy(scope.row,2)"
+                  >賣出</el-button>
+                </div>
+              </template>
+            </el-table-column>
           </el-table>
           <el-pagination
             layout="prev,pager,next"
@@ -116,10 +128,13 @@ export default {
       tableData: [],
       tableData1: [],
       total: 0,
-      total1: 0
+      total1: 0,
     }
   },
   created() {
+    console.log(this.$store.state);
+  },
+  mounted() {
     this.getData(1, 1);
     this.getData(1, 2);
   },
@@ -143,21 +158,62 @@ export default {
     },
     handlePrevClick(val) {
       this.getData(val, 1);
+      this.$store.state.commit('SET_PAGE', val);
     },
     handleNextClick(val) {
       this.getData(val, 1);
+      this.$store.state.commit('SET_PAGE', val);
     },
     handleChange(val) {
       this.getData(val, 1);
+      this.$store.state.commit('SET_PAGE', val);
     },
     handlePrevClick1(val) {
       this.getData(val, 2);
+      this.$store.state.commit('SET_PAGE2', val);
     },
     handleNextClick1(val) {
       this.getData(val, 2);
+      this.$store.state.commit('SET_PAGE2', val);
     },
     handleChange1(val) {
       this.getData(val, 2);
+      this.$store.state.commit('SET_PAGE2', val);
+    },
+    handleBuy(row, type) {
+      axios.post('/api/trade/buytrade', {
+        userid: this.$store.state.message.userid,
+        sessionid: this.$store.state.message.sessionid,
+        id: row.id,
+        buynum: row.num,
+      }).then(res => {
+        console.log(res);
+        if (res.data.status == 1) {
+          this.$message({
+            type: 'success',
+            message: res.data.msg,
+            showClose: true,
+            onClose: this.onclose(type)
+          })
+        } else {
+          this.$message({
+            type: 'error',
+            message: res.data.msg,
+            showClose: true
+          })
+        }
+      }).catch(err => {
+        console.log(err);
+      })
+    },
+    onclose(type) {
+      if (type == 1) {
+        this.getData(this.$store.state.page1, 1);
+        this.$store.commit('SET_PAGE', this.$store.state.page1);
+      } else {
+        this.getData(this.$store.state.page2, 1);
+        this.$store.commit('SET_PAGE2', this.$store.state.page2);
+      }
     }
   },
   filters: {
@@ -176,92 +232,5 @@ function format1(shijianchuo) {
 }
 </script>
 <style>
-.trade1 {
-  width: 1200px;
-  margin: 20px auto;
-}
-.footer {
-  width: 100%;
-  height: 270px;
-  background: #313131;
-}
-.footer_content {
-  width: 1200px;
-  margin: 0 auto;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.footer_top {
-  height: 127px;
-  border-bottom: 1px solid #4a4a4a;
-}
-.footer_top .footer_content h3 {
-  margin: 20px 0;
-  font-size: 18px;
-}
-.footer_top .footer_content * {
-  color: #fff;
-  text-decoration: none;
-}
-.footer_top .footer_content p {
-  float: left;
-  margin-right: 40px;
-}
-.footer_bottom {
-  height: auto;
-}
-.footer_bottom .footer_content {
-  margin-top: 30px;
-}
-.space_between {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  color: #fff;
-  align-self: center;
-}
-.space_between1 {
-  align-items: flex-end;
-}
-.space_between p {
-  line-height: 25px;
-}
-.el-menu-item a {
-  display: inline-block;
-  width: 100%;
-}
-.el-menu.el-menu--horizontal {
-  border-bottom: 0;
-}
-.el-table th,
-.el-table tr {
-  background-color: #001a2b !important;
-  color: #fff;
-}
-.el-table,
-.el-table__expanded-cell {
-  background-color: #001a2b;
-}
-.el-table td,
-.el-table th.is-leaf {
-  border-bottom: 1px solid #162d3d;
-}
-.el-table--border,
-.el-table--group {
-  border: 1px solid #162d3d;
-}
-.el-table--border::after,
-.el-table--group::after,
-.el-table::before {
-  background-color: #162d3d;
-}
-.el-table--border td,
-.el-table--border th,
-.el-table__body-wrapper .el-table--border.is-scrolling-left ~ .el-table__fixed {
-  border-right: none;
-}
-.el-table--enable-row-hover .el-table__body tr:hover > td {
-  background-color: #162d3d;
-}
+@import url("~/assets/trade1.css");
 </style>

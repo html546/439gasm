@@ -178,6 +178,7 @@ export default {
     },
     handleExit() {
       this.$store.dispatch('clearMessage');
+      window.localStorage.removeItem('store');
     },
     toTc() {
       console.log('toTc');

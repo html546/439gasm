@@ -85,7 +85,7 @@ export default {
   asyncData() {
     return axios.get('http://t439.shangtua.com:88/api/Login/get_price')
       .then(res => {
-        // console.log(res);
+        console.log(res);
         return { post: res.data.data }
       })
   },
