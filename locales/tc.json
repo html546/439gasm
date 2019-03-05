@@ -90,10 +90,42 @@
         "unpaid": "未支付",
         "paid": "已支付",
         "operate": "操作",
-        "completed":"已完成",
-        "rescinded":"已撤銷",
-        "Arbitration":"仲裁中",
-        "seller":"仲裁賣家",
-        "buyer":"仲裁買家"
+        "completed": "已完成",
+        "rescinded": "已撤銷",
+        "Arbitration": "仲裁中",
+        "seller": "仲裁賣家",
+        "buyer": "仲裁買家",
+        "remit": "匯款",
+        "cancel": "撤銷",
+        "details": "查看詳情",
+        "arbitration": "申請仲裁",
+        "confirm": "確認交易",
+        "proof": "交易憑據"
+    },
+    "trade3": {
+        "hangout": "交易掛出",
+        "fee": "手續費",
+        "mode": "掛出方式",
+        "pay": "付款方式",
+        "price": "掛出價格",
+        "num": "掛出數量",
+        "pass2": "二級密碼",
+        "submit": "立即提交",
+        "hangout_mode": "請選擇掛出方式",
+        "sale": "掛賣單",
+        "bill": "掛買單",
+        "pay_mode": "請選擇付款方式",
+        "alipay": "支付寶",
+        "wechat": "微信",
+        "bank": "銀行匯款"
+    },
+    "friend": {
+        "register": "會員註冊",
+        "member": "會員編號",
+        "pass1": "登錄密碼",
+        "pass1c": "確認登錄密碼",
+        "pass2": "支付密碼",
+        "pass2c": "確認支付密碼",
+        "submit": "立即提交"
     }
 }

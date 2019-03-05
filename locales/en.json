@@ -94,6 +94,38 @@
         "rescinded": "rescinded",
         "Arbitration": "Arbitration",
         "seller": "Arbitrator seller",
-        "buyer": "Arbitration buyer"
+        "buyer": "Arbitration buyer",
+        "remit": "Remittance",
+        "cancel": "cancel",
+        "details": "view details",
+        "arbitration": "arbitration",
+        "confirm": "confirm",
+        "proof": "proof"
+    },
+    "trade3": {
+        "hangout": "Transaction hang out",
+        "fee": "Service Charge",
+        "mode": "Hang out mode",
+        "pay": "Payment method",
+        "price": "Hang out price",
+        "num": "Hang out number",
+        "pass2": "Secondary password",
+        "submit": "Immediate submission",
+        "hangout_mode": "Please choose hang-out mode",
+        "sale": "Sale list",
+        "bill": "Hang up the bill",
+        "pay_mode": "Please choose the mode of payment",
+        "alipay": "Alipay",
+        "wechat": "WeChat",
+        "bank": "Bank"
+    },
+    "friend": {
+        "register": "Membership registration",
+        "member": "member ID",
+        "pass1": "Login password",
+        "pass1c": "Confirm Password",
+        "pass2": "Payment password",
+        "pass2c": "Confirm Password",
+        "submit": "Immediate submission"
     }
 }
