@@ -62,6 +62,7 @@
                 type="text"
                 :key="key"
                 v-if="val.input=='text'&&key=='mobile_phone'"
+                name="mobile_phone"
                 v-model="mobile"
               ></el-input>
               <el-select
@@ -185,7 +186,6 @@
 import axios from 'axios';
 export default {
   name: '',
-
   data() {
     return {
       formContent: '',
@@ -329,16 +329,32 @@ export default {
       for (let i = 0; i < e.target.length; i++) {
         formdata.append(e.target[i].name, e.target[i].value);
       }
-      formdata.append('statetype', this.statetype);
       formdata.append('userid', this.$store.state.message.userid);
       formdata.append('sessionid', this.$store.state.message.sessionid);
-      axios.post('/api/webmember/registersave',
+      axios.post('/api/member/registersave',
         formdata
       ).then(res => {
         console.log(res);
+        if (res.data.status == 1) {
+          this.$message({
+            type: 'success',
+            message: res.data.msg,
+            showClose: true,
+            onClose: this.onclose1()
+          })
+        } else {
+          this.$message({
+            type: 'error',
+            message: res.data.msg,
+            showClose: true
+          })
+        }
       }).catch(err => {
         console.log(err);
       })
+    },
+    onclose1() {
+      this.getPage(this.statetype);
     },
     handleActive() {
       this.isActive = false;
