@@ -94,7 +94,6 @@
               <el-menu-item
                 index="5-1"
                 v-if="$i18n.locale === 'en'"
-                @click="toTc"
               >
                 <nuxt-link
                   :to="`/tc`+$route.fullPath"
@@ -107,7 +106,6 @@
               <el-menu-item
                 index="5-2"
                 v-else
-                @click="toEn"
               >
                 <nuxt-link
                   :to="$route.fullPath.replace(/^\/[^\/]+/, '')"
@@ -172,15 +170,29 @@ export default {
       console.log(key, keyPath);
       if (key == '5-1') {
         this.title = 'english';
+        axios.post('/api/Login/language', {
+          lang: 'en'
+        }).then(res => {
+          console.log(res);
+        }).catch(err => {
+          console.log(err);
+        })
       } else if (key == '5-2') {
         this.title = '繁體中文';
+        axios.post('/api/Login/language', {
+          lang: 'tw'
+        }).then(res => {
+          console.log(res);
+        }).catch(err => {
+          console.log(err);
+        })
       }
     },
     handleExit() {
       this.$store.dispatch('clearMessage');
       window.localStorage.removeItem('store');
     },
-    toTc() {
+    /* toTc() {
       console.log('toTc');
       axios.post('/api/Login/language', {
         lang: 'tw'
@@ -199,7 +211,7 @@ export default {
       }).catch(err => {
         console.log(err);
       })
-    }
+    } */
   },
 }
 </script>
