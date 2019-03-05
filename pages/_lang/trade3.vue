@@ -1,6 +1,12 @@
 <template>
   <div>
-    <p>我是交易挂出</p>
+    <div class="hang_out">
+      <el-card class="box-card">
+        <div slot="header">
+          <p>交易掛出</p>
+        </div>
+      </el-card>
+    </div>
   </div>
 </template>
 
@@ -15,5 +21,9 @@ export default {
 }
 </script>
 
-<style lang="" scoped>
+<style>
+.hang_out {
+  width: 1200px;
+  margin: 0 auto;
+}
 </style>

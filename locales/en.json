@@ -79,13 +79,21 @@
     },
     "trade2": {
         "detail": "Transaction details",
-        "record_id": "Record ID",
-        "number": "User ID",
+        "number": "sale username",
         "num": "trading capacity",
         "oneprice": "Unit Price",
         "total": "Total",
         "time": "Closing time",
         "fee": "Service Charge",
-        "pay":"Actual payment"
+        "pay": "Actual payment",
+        "state": "state",
+        "unpaid": "Unpaid",
+        "paid": "Paid",
+        "operate": "operation",
+        "completed": "Completed",
+        "rescinded": "rescinded",
+        "Arbitration": "Arbitration",
+        "seller": "Arbitrator seller",
+        "buyer": "Arbitration buyer"
     }
 }

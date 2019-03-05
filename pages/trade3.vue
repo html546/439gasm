@@ -1,19 +1,4 @@
-<template>
-  <div>
-    <p>我是交易挂出</p>
-  </div>
-</template>
-
 <script>
-export default {
-  name: '',
-  data() {
-    return {
-
-    }
-  }
-}
+import Trade3 from '~/pages/_lang/trade3';
+export default Trade3;  
 </script>
-
-<style lang="" scoped>
-</style>

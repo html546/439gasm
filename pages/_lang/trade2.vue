@@ -12,12 +12,9 @@
         element-loading-spinner="el-icon-loading"
         element-loading-background="rgba(0, 0, 0, 0.8)"
       >
+
         <el-table-column
-          prop="id"
-          :label="$t('trade2.record_id')"
-        ></el-table-column>
-        <el-table-column
-          prop="username"
+          prop="saleusername"
           :label="$t('trade2.number')"
         ></el-table-column>
         <el-table-column
@@ -37,6 +34,36 @@
           </template>
         </el-table-column>
         <el-table-column
+          prop="state"
+          :label="$t('trade2.state')"
+        >
+          <template slot-scope="scope">
+            <div>
+              <template v-if="scope.row.state == 0">
+                {{$t('trade2.unpaid')}}
+              </template>
+              <template v-else-if="scope.row.state == 1">
+                {{$t('trade2.paid')}}
+              </template>
+              <template v-else-if="scope.row.state == 2">
+                {{$t('trade2.completed')}}
+              </template>
+              <template v-else-if="scope.row.state == 3">
+                {{$t('trade2.rescinded')}}
+              </template>
+              <template v-else-if="scope.row.state == 4">
+                {{$t('trade2.Arbitration')}}
+              </template>
+              <template v-else-if="scope.row.state == 5">
+                {{$t('trade2.seller')}}
+              </template>
+              <template v-else-if="scope.row.state == 6">
+                {{$t('trade2.buyer')}}
+              </template>
+            </div>
+          </template>
+        </el-table-column>
+        <el-table-column
           prop="buytime"
           :label="$t('trade2.time')"
         >
@@ -50,8 +77,16 @@
         ></el-table-column>
         <el-table-column
           prop="usdtprice"
-          label="實付款價格"
+          :label="$t('trade2.pay')"
         ></el-table-column>
+        <el-table-column
+          prop="wealth"
+          :label="$t('trade2.operate')"
+        >
+          <template slot-scope="scope">
+            <div></div>
+          </template>
+        </el-table-column>
       </el-table>
       <el-pagination
         layout="prev,pager,next"
@@ -120,6 +155,9 @@ export default {
       this.getPage(val);
       this.$store.state.commit('SET_PAGE3', val);
     },
+    t(...params) {
+      return this.$t.apply(this, params)
+    }
   },
   filters: {
     timefilter(val) {

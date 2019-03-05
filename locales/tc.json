@@ -79,13 +79,21 @@
     },
     "trade2": {
         "detail": "交易明細",
-        "record_id": "記錄ID",
-        "number": "用戶編號",
+        "number": "用戶名",
         "num": "交易數量",
         "oneprice": "單價",
         "total": "總額",
         "time": "成交時間",
         "fee": "手續費",
-        "pay": "實付款價格"
+        "pay": "實付款價格",
+        "state": "狀態",
+        "unpaid": "未支付",
+        "paid": "已支付",
+        "operate": "操作",
+        "completed":"已完成",
+        "rescinded":"已撤銷",
+        "Arbitration":"仲裁中",
+        "seller":"仲裁賣家",
+        "buyer":"仲裁買家"
     }
 }
