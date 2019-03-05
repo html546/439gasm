@@ -126,6 +126,12 @@
         "pass1c": "Confirm Password",
         "pass2": "Payment password",
         "pass2c": "Confirm Password",
-        "submit": "Immediate submission"
+        "submit": "Immediate submission",
+        "mobile": "Mobile phone",
+        "email": "mailbox register",
+        "Captcha": "Captcha",
+        "code": "identifying code",
+        "getcode": "Get identifying code",
+        "follow": "Scanning QR Code to help friends register"
     }
 }

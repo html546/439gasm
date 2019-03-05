@@ -26,7 +26,7 @@
                     type="primary"
                     :disabled="!isActive"
                     @click="handleActive"
-                  >{{$t('register.mobile')}}</el-button>
+                  >{{$t('friend.mobile')}}</el-button>
                 </el-col>
                 <el-col
                   :span="12"
@@ -36,7 +36,7 @@
                     type="primary"
                     :disabled="isActive"
                     @click="handleActive1"
-                  >{{$t('register.email')}}</el-button>
+                  >{{$t('friend.email')}}</el-button>
                 </el-col>
               </el-row>
             </div>
@@ -107,7 +107,7 @@
                 </el-option>
               </el-select>
             </el-form-item>
-            <el-form-item label="圖形驗證碼">
+            <el-form-item :label="$t('friend.Captcha')">
               <el-input
                 type="text"
                 v-model="verify_code"
@@ -120,7 +120,7 @@
                 alt=""
               >
             </el-form-item>
-            <el-form-item label="驗證碼">
+            <el-form-item :label="$t('friend.code')">
               <el-input
                 type="text"
                 v-model="mobile_code"
@@ -166,10 +166,15 @@
               >{{$t('friend.submit')}}</el-button>
             </el-form-item>
           </el-form>
-          <div
-            class="qrcode"
-            id="qrcode"
-          ></div>
+          <div class="qrcode_box">
+            <div
+              class="qrcode"
+              id="qrcode"
+            >
+            </div>
+            <a :href="qrcode">{{qrcode}}</a>
+            <p>{{$t('friend.follow')}}</p>
+          </div>
         </div>
       </el-card>
     </div>
@@ -204,10 +209,11 @@ export default {
       encrypt_code: '',
       verify_code: '',
       disabled: false,
-      name: this.$t('register.getcode'),
+      name: this.$t('friend.getcode'),
       mobile_code: '',
       statetype: 1,
       isActive: true,
+      qrcode: ''
     }
   },
   created() {
@@ -225,6 +231,7 @@ export default {
         userid: this.$store.state.message.userid,
         sessionid: this.$store.state.message.sessionid
       }).then(res => {
+        this.qrcode = res.data.data;
         var qrcode = new QRCode('qrcode', {
           text: res.data.data,
           width: 180,
@@ -323,7 +330,6 @@ export default {
         formdata.append(e.target[i].name, e.target[i].value);
       }
       formdata.append('statetype', this.statetype);
-      formdata.append('username', this.username);
       formdata.append('userid', this.$store.state.message.userid);
       formdata.append('sessionid', this.$store.state.message.sessionid);
       axios.post('/api/webmember/registersave',
@@ -361,16 +367,31 @@ export default {
   width: 1200px;
   margin: 55px auto 100px;
 }
+.qrcode_box {
+  width: 240px;
+  height: 240px;
+  float: left;
+  margin-top: 160px;
+  margin-left: 160px;
+}
 .qrcode {
   background: url("~assets/qrcode.png") no-repeat center center;
   background-size: cover;
-  margin-top: 160px;
-  margin-left: 160px;
   width: 222px;
   height: 222px;
-  float: left;
+  padding: 1px;
 }
 .qrcode img {
   margin: 20px 0 0 20px;
+}
+.qrcode_box p {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 18px;
+  color: #285ea4;
+}
+.qrcode_box a {
+  display: block;
+  color: #285ea4;
 }
 </style>
