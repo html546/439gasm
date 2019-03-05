@@ -6,13 +6,40 @@
         <div slot="header">
           <p style="text-align:left;">{{$t('friend.register')}}</p>
         </div>
-        <div>
+        <div style="overflow:hidden;">
           <el-form
             ref="form"
             label-width="140px"
-            style="width:560px"
+            style="width:560px;float:left;"
             @submit.native="handleSubmit"
           >
+            <div
+              class="button_group"
+              style="margin:20px auto;"
+            >
+              <el-row>
+                <el-col
+                  :span="12"
+                  style="text-align:center;"
+                >
+                  <el-button
+                    type="primary"
+                    :disabled="!isActive"
+                    @click="handleActive"
+                  >{{$t('register.mobile')}}</el-button>
+                </el-col>
+                <el-col
+                  :span="12"
+                  style="text-align:center;"
+                >
+                  <el-button
+                    type="primary"
+                    :disabled="isActive"
+                    @click="handleActive1"
+                  >{{$t('register.email')}}</el-button>
+                </el-col>
+              </el-row>
+            </div>
             <el-form-item :label="$t('friend.member')">
               <el-input
                 name="username"
@@ -139,6 +166,10 @@
               >{{$t('friend.submit')}}</el-button>
             </el-form-item>
           </el-form>
+          <div
+            class="qrcode"
+            id="qrcode"
+          ></div>
         </div>
       </el-card>
     </div>
@@ -149,6 +180,7 @@
 import axios from 'axios';
 export default {
   name: '',
+
   data() {
     return {
       formContent: '',
@@ -173,15 +205,38 @@ export default {
       verify_code: '',
       disabled: false,
       name: this.$t('register.getcode'),
-      mobile_code: ''
+      mobile_code: '',
+      statetype: 1,
+      isActive: true,
     }
   },
   created() {
-    this.getPage();
+    this.getPage(this.statetype);
     this.getBanks();
     this.getVerifyCode();
+    this.getQRCode();
+  },
+  mounted() {
+
   },
   methods: {
+    getQRCode() {
+      axios.post('/api/member/qrCode', {
+        userid: this.$store.state.message.userid,
+        sessionid: this.$store.state.message.sessionid
+      }).then(res => {
+        var qrcode = new QRCode('qrcode', {
+          text: res.data.data,
+          width: 180,
+          height: 180,
+          colorDark: '#000000',
+          colorLight: '#ffffff',
+          correctLevel: QRCode.CorrectLevel.H
+        })
+      }).catch(err => {
+        console.log(err);
+      })
+    },
     getVerifyCode() {
       axios.post('/api/login/getVerifyCode').then(res => {
         this.imageUrl = res.data.image;
@@ -190,11 +245,11 @@ export default {
         console.log(err);
       })
     },
-    getPage() {
+    getPage(statetype) {
       axios.post('/api/member/register', {
         userid: this.$store.state.message.userid,
         sessionid: this.$store.state.message.sessionid,
-        type: 1
+        statetype: statetype
       }).then(res => {
         console.log(res);
         this.username = res.data.data.defaultname;
@@ -269,6 +324,8 @@ export default {
       }
       formdata.append('statetype', this.statetype);
       formdata.append('username', this.username);
+      formdata.append('userid', this.$store.state.message.userid);
+      formdata.append('sessionid', this.$store.state.message.sessionid);
       axios.post('/api/webmember/registersave',
         formdata
       ).then(res => {
@@ -277,8 +334,20 @@ export default {
         console.log(err);
       })
     },
+    handleActive() {
+      this.isActive = false;
+      this.statetype = 1;
+      this.getPage(1);
+    },
+    handleActive1() {
+      this.isActive = true;
+      this.statetype = 2;
+      this.getPage(2);
+    },
   },
 }
+
+
 </script>
 
 <style >
@@ -291,5 +360,17 @@ export default {
 .friend {
   width: 1200px;
   margin: 55px auto 100px;
+}
+.qrcode {
+  background: url("~assets/qrcode.png") no-repeat center center;
+  background-size: cover;
+  margin-top: 160px;
+  margin-left: 160px;
+  width: 222px;
+  height: 222px;
+  float: left;
+}
+.qrcode img {
+  margin: 20px 0 0 20px;
 }
 </style>
