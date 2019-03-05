@@ -170,19 +170,23 @@ export default {
       console.log(key, keyPath);
       if (key == '5-1') {
         this.title = 'english';
-        axios.post('/api/Login/language', {
-          lang: 'en'
-        }).then(res => {
+        let formdata = new FormData();
+        formdata.append('lang', 'en');
+        var that = this;
+        axios.post('/api/Login/language', formdata).then(res => {
           console.log(res);
+          window.location.reload();
         }).catch(err => {
           console.log(err);
         })
       } else if (key == '5-2') {
         this.title = '繁體中文';
-        axios.post('/api/Login/language', {
-          lang: 'tw'
-        }).then(res => {
+        let formdata = new FormData();
+        formdata.append('lang', 'tw');
+        var that = this;
+        axios.post('/api/Login/language', formdata).then(res => {
           console.log(res);
+          window.location.reload();
         }).catch(err => {
           console.log(err);
         })

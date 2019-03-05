@@ -11,7 +11,7 @@
             ref="form"
             label-width="140px"
             style="width:560px"
-            @submit.native="onSubmit"
+            @submit.native="handleSubmit"
           >
             <el-form-item :label="$t('friend.member')">
               <el-input
@@ -29,7 +29,13 @@
               <el-input
                 v-model="val.default"
                 :name="key"
-                v-if="val.input=='text'"
+                v-if="val.input=='text'&&key!=='mobile_phone'"
+              ></el-input>
+              <el-input
+                type="text"
+                :key="key"
+                v-if="val.input=='text'&&key=='mobile_phone'"
+                v-model="mobile"
               ></el-input>
               <el-select
                 :name="key"
@@ -73,6 +79,34 @@
                 >
                 </el-option>
               </el-select>
+            </el-form-item>
+            <el-form-item label="圖形驗證碼">
+              <el-input
+                type="text"
+                v-model="verify_code"
+                style="width:70%;float:left;"
+              ></el-input>
+              <img
+                :src="imageUrl"
+                @click="getVerifyCode"
+                style="width:30%;height:40px;"
+                alt=""
+              >
+            </el-form-item>
+            <el-form-item label="驗證碼">
+              <el-input
+                type="text"
+                v-model="mobile_code"
+                name="mobile_code"
+                style="width:70%;float:left;"
+              >
+              </el-input>
+              <el-button
+                type="text"
+                @click="getverify"
+                :disabled="disabled"
+                style="width:30%;height:40px;"
+              >{{name}}</el-button>
             </el-form-item>
             <el-form-item :label="$t('friend.pass1')">
               <el-input
@@ -133,13 +167,29 @@ export default {
       sex: '',
       memberrank: '',
       username: '',
+      mobile: '',
+      imageUrl: '',
+      encrypt_code: '',
+      verify_code: '',
+      disabled: false,
+      name: this.$t('register.getcode'),
+      mobile_code: ''
     }
   },
   created() {
     this.getPage();
     this.getBanks();
+    this.getVerifyCode();
   },
   methods: {
+    getVerifyCode() {
+      axios.post('/api/login/getVerifyCode').then(res => {
+        this.imageUrl = res.data.image;
+        this.encrypt_code = res.data.encryptCode;
+      }).catch(err => {
+        console.log(err);
+      })
+    },
     getPage() {
       axios.post('/api/member/register', {
         userid: this.$store.state.message.userid,
@@ -172,40 +222,61 @@ export default {
         console.log(err);;
       })
     },
-    onSubmit(event) {
-      console.log(event);
-      event.preventDefault();
-      var formdata = new FormData();
-      for (let i = 0; i < event.target.length - 4; i++) {
-        if (event.target[i].name == 'bank_name' || event.target[i].name == 'memberrank' || event.target[i].name == 'sex') {
-          continue;
-        }
-        formdata.append(event.target[i].name, event.target[i].value);
-      }
-      formdata.append('username', this.username);
-      formdata.append('userid', this.$store.state.message.userid);
-      formdata.append('sessionid', this.$store.state.message.sessionid);
-      formdata.append('bank_name', this.bank_name);
-      formdata.append('sex', this.sex);
-      formdata.append('memberrank', this.memberrank);
-      axios.post('/api/member/registersave', formdata).then(res => {
+    getverify() {
+      axios.post('/api/login/verify', {
+        verify_code: this.verify_code,
+        encrypt_code: this.encrypt_code,
+        mobile_phone: this.mobile
+      }).then(res => {
         if (res.data.status == 1) {
           this.$message({
             message: res.data.msg,
             type: 'success',
-            showClose: true
+            showClose: true,
+            onClose: this.onclose()
           })
-        } else if (res.data.status == 0) {
+        } else {
           this.$message({
             message: res.data.msg,
-            type: "error",
+            type: 'danger',
             showClose: true
           })
         }
       }).catch(err => {
         console.log(err);
       })
-    }
+    },
+    onclose() {
+      let i = 60;
+      let timer = setInterval(() => {
+        i--;
+        if (i > 0) {
+          this.name = `${i}s`;
+          this.disabled = true;
+        } else {
+          this.name = this.$t('register.retrieve');
+          this.disabled = false;
+          clearInterval(timer);
+        }
+      }, 1000);
+    },
+    handleSubmit(e) {
+      e.preventDefault();
+      var formdata = new FormData();
+      console.log(e.target.length);
+      for (let i = 0; i < e.target.length; i++) {
+        formdata.append(e.target[i].name, e.target[i].value);
+      }
+      formdata.append('statetype', this.statetype);
+      formdata.append('username', this.username);
+      axios.post('/api/webmember/registersave',
+        formdata
+      ).then(res => {
+        console.log(res);
+      }).catch(err => {
+        console.log(err);
+      })
+    },
   },
 }
 </script>

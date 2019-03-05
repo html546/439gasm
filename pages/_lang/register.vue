@@ -183,7 +183,6 @@ export default {
   methods: {
     getVerifyCode() {
       axios.post('/api/login/getVerifyCode').then(res => {
-        // console.log(res);
         this.imageUrl = res.data.image;
         this.encrypt_code = res.data.encryptCode;
       }).catch(err => {
@@ -217,15 +216,6 @@ export default {
       }).catch(err => {
         console.log(err);
       })
-      /* axios.post({
-        method: 'post',
-        url: '/api/webmember/registersave',
-        data: formdata
-      }).then(res => {
-        console.log(res);
-      }).catch(err => {
-        console.log(err);
-      }) */
     },
     handleActive() {
       this.isActive = true;
