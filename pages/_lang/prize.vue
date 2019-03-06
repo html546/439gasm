@@ -23,7 +23,7 @@
           ></el-table-column>
           <el-table-column
             prop="calc_date"
-            label="獲獎日期"
+            :label="$t('prize.date')"
           >
             <template slot-scope="scope">
               <p>{{scope.row.calc_date | timefilter}}</p>
@@ -31,26 +31,26 @@
           </el-table-column>
           <el-table-column
             prop="prize"
-            label="獎金"
+            :label="$t('prize.bonus')"
           ></el-table-column>
           <el-table-column
             prop="income"
-            label="收入"
+            :label="$t('prize.income')"
           ></el-table-column>
           <el-table-column
             prop="total_income"
-            label="累計收入"
+            :label="$t('prize.amount')"
           ></el-table-column>
           <el-table-column
             prop="wealth"
-            label="操作"
+            :label="$t('prize.operate')"
           >
             <template slot-scope="scope">
               <el-button
                 type="primary"
                 size="mini"
                 @click="handleDetail(scope)"
-              >查看詳情</el-button>
+              >{{$t('prize.details')}}</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -64,12 +64,12 @@
           @next-click="handleNext"
           @current-change="handleChange"
           v-loading="loading"
-          element-loading-text="拼命加载中"
+          :element-loading-text="$t('prize.loading')"
           element-loading-spinner="el-icon-loading"
           element-loading-background="rgba(0, 0, 0, 0.8)"
         ></el-pagination>
         <el-dialog
-          title="奖金详情"
+          :title="$t('prize.details')"
           :visible.sync="dialogTableVisible"
         >
           <div
@@ -83,19 +83,19 @@
               :stripe="true"
             >
               <el-table-column
-                label="奖金来源编号"
+                :label="$t('prize.source')"
                 prop="fromname"
               ></el-table-column>
               <el-table-column
-                label="产生的奖金"
+                :label="$t('prize.generate')"
                 prop="trueval"
               ></el-table-column>
               <el-table-column
-                label="奖金计算公式"
+                :label="$t('prize.formula')"
                 prop="memo"
               ></el-table-column>
               <el-table-column
-                label="层数"
+                :label="$t('prize.layer')"
                 prop="layer"
               ></el-table-column>
             </el-table>

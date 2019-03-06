@@ -151,5 +151,41 @@
         "release": "released",
         "release1": "to be released",
         "all": "total"
+    },
+    "reinvestment": {
+        "mode": "double throw mode",
+        "type": "Account type",
+        "balance": "Account balance",
+        "price": "USDT Real time price",
+        "money": "Amount of money",
+        "select": "Choosing the Re-cast Method",
+        "register": "Full registration",
+        "combine": "Combination registration",
+        "submit": "Immediate submission"
+    },
+    "activate": {
+        "balance": "Activate account balance",
+        "price": "Current USDT price",
+        "need": "Activating Accounts Needs Activating Accounts",
+        "parameter": "parameter",
+        "adequate": "Please confirm that the balance is adequate",
+        "mode_select": "Choice of Deduction Method",
+        "register": "Full registration",
+        "combine": "Combination registration",
+        "submit": "Immediate submission"
+    },
+    "prize": {
+        "date": "date of award",
+        "bonus": "bonus",
+        "income": "income",
+        "amount": "Accumulated income",
+        "operate": "operation",
+        "details": "details",
+        "loading": "Desperately Loading",
+        "details1": "Bonus Details",
+        "source": "Source Number of Bonus",
+        "generate": "Bonus generated",
+        "formula": "Formula for calculating bonus",
+        "layer": "layer number"
     }
 }

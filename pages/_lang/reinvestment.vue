@@ -6,26 +6,26 @@
         style="width:500px;margin:0 auto;"
       >
         <el-form
-          label-width="120px"
+          label-width="160px"
           class="form_box"
         >
-          <el-form-item label="復投方式">
+          <el-form-item :label="$t('reinvestment.mode')">
             <el-select
               v-model="mode"
-              placeholder="請選擇復投方式"
+              :placeholder="$t('reinvestment.select')"
               style="width:100%;"
             >
               <el-option
                 value="1"
-                label="全額註冊"
+                :label="$t('reinvestment.register')"
               ></el-option>
               <el-option
                 value="2"
-                label="組合方式註冊"
+                :label="$t('reinvestment.combine')"
               ></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="賬戶類型">
+          <el-form-item :label="$t('reinvestment.type')">
             <el-select
               style="width:100%;"
               value-key="money"
@@ -40,19 +40,19 @@
               ></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="賬戶餘額">
+          <el-form-item :label="$t('reinvestment.balance')">
             <el-input
               v-model="balance"
               :readonly="true"
             ></el-input>
           </el-form-item>
-          <el-form-item label="usdt實時價格">
+          <el-form-item :label="$t('reinvestment.price')">
             <el-input
               v-model="price"
               :readonly="true"
             ></el-input>
           </el-form-item>
-          <el-form-item label="復投金額">
+          <el-form-item :label="$t('reinvestment.money')">
             <el-input
               v-model="bd_money"
               :readonly="true"
@@ -62,7 +62,7 @@
             type="primary"
             class="submit_btn"
             @click="handleSubmit"
-          >立即提交</el-button>
+          >{{$t('reinvestment.submit')}}</el-button>
         </el-form>
       </div>
     </div>

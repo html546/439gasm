@@ -1,8 +1,11 @@
 
 <template>
   <div class="lorr">
-    <headtop color="#000" />
-    <nuxt />
+    <headtop
+      color="#000"
+      @page-reload="reload"
+    />
+    <nuxt v-if="isRouterAlive" />
   </div>
 </template>
 
@@ -12,7 +15,20 @@ export default {
   components: {
     headtop
   },
+  data() {
+    return {
+      isRouterAlive: true
+    }
+  },
   mounted() {
+  },
+  methods: {
+    reload() {
+      this.isRouterAlive = false;
+      this.$nextTick(() => {
+        this.isRouterAlive = true;
+      })
+    }
   },
 }
 </script>

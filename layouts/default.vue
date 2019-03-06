@@ -1,6 +1,9 @@
 <template>
   <div>
-    <headtop color="#000" />
+    <headtop
+      color="#000"
+      @page-reload="reload"
+    />
     <div class="carousel">
       <el-carousel
         :interval="5000"
@@ -17,7 +20,7 @@
         </el-carousel-item>
       </el-carousel>
     </div>
-    <nuxt />
+    <nuxt v-if="isRouterAlive" />
     <div class="footer">
       <div class="footer_top">
         <div class="footer_content">
@@ -84,7 +87,8 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      bg: []
+      bg: [],
+      isRouterAlive: true
     }
   },
   created() {
@@ -100,6 +104,12 @@ export default {
       axios.post('http://127.0.0.1:3000/api/Login/getad').then(res => {
         // console.log(res);
         this.bg = res.data.data;
+      })
+    },
+    reload() {
+      this.isRouterAlive = false;
+      this.$nextTick(() => {
+        this.isRouterAlive = true;
       })
     }
   },

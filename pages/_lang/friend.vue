@@ -213,7 +213,7 @@ export default {
       mobile_code: '',
       statetype: 1,
       isActive: true,
-      qrcode: ''
+      qrcode: '',
     }
   },
   created() {
@@ -223,7 +223,6 @@ export default {
     this.getQRCode();
   },
   mounted() {
-
   },
   methods: {
     getQRCode() {
@@ -231,15 +230,20 @@ export default {
         userid: this.$store.state.message.userid,
         sessionid: this.$store.state.message.sessionid
       }).then(res => {
+        console.log(res, 666666);
         this.qrcode = res.data.data;
-        var qrcode = new QRCode('qrcode', {
-          text: res.data.data,
-          width: 180,
-          height: 180,
-          colorDark: '#000000',
-          colorLight: '#ffffff',
-          correctLevel: QRCode.CorrectLevel.H
-        })
+        if (!document.getElementById('qrcode').innerHTML) {
+          var qrcode = new QRCode('qrcode', {
+            text: res.data.data,
+            width: 180,
+            height: 180,
+            colorDark: '#000000',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.H
+          })
+        } else {
+          return false;
+        }
       }).catch(err => {
         console.log(err);
       })

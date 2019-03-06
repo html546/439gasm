@@ -151,5 +151,41 @@
         "release": "已釋放",
         "release1": "待釋放",
         "all": "總量"
+    },
+    "reinvestment": {
+        "mode": "復投方式",
+        "type": "賬戶類型",
+        "balance": "賬戶餘額",
+        "price": "USDT實時價格",
+        "money": "復投金額",
+        "select": "選擇復投方式",
+        "register": "全額註冊",
+        "combine": "組合方式註冊",
+        "submit": "立即提交"
+    },
+    "activate": {
+        "balance": "激活賬戶餘額",
+        "price": "USDT當前價格",
+        "need": "激活賬號需要激活賬戶",
+        "parameter": "參數",
+        "adequate": "請確認餘額充足",
+        "mode_select": "扣款方式選擇",
+        "register": "全額註冊",
+        "combine": "組合方式註冊",
+        "submit": "立即提交"
+    },
+    "prize": {
+        "date": "獲獎日期",
+        "bonus": "獎金",
+        "income": "收入",
+        "amount": "累計收入",
+        "operate": "操作",
+        "details": "查看詳情",
+        "loading": "拼命加載中",
+        "details1": "獎金詳情",
+        "source": "獎金來源編號",
+        "generate": "產生的獎金",
+        "formula": "獎金計算公式",
+        "layer": "層數"
     }
 }

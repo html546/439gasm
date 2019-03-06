@@ -3,31 +3,31 @@
     <div class="activate">
       <div class="form_box">
         <el-form label-width="140">
-          <el-form-item label="激活账户余额">
+          <el-form-item :label="$t('activate.balance')">
             <el-input
               v-model="balance"
               :readonly="true"
             ></el-input>
           </el-form-item>
-          <el-form-item label="当前usdt价格">
+          <el-form-item :label="$t('activate.price')">
             <el-input
               v-model="price"
               :readonly="true"
             ></el-input>
           </el-form-item>
-          <p>激活账号需要激活账户{{level}}(参数),请确认余额充足.</p>
-          <el-form-item label="扣款方式选择">
+          <p>{{$t('activate.need')}}{{level}}({{$t('activate.parameter')}}),{{$t('activate.adequate')}}.</p>
+          <el-form-item :label="$t('activate.mode_select')">
             <el-select
               v-model="mode"
               style="width:100%;"
               @change="handleChange"
             >
               <el-option
-                label="全额注册"
+                :label="$t('activate.register')"
                 value="1"
               ></el-option>
               <el-option
-                label="组合方式注册"
+                :label="$t('activate.combine')"
                 value="2"
               ></el-option>
             </el-select>
@@ -35,7 +35,7 @@
           <el-button
             type="primary"
             @click="handleSubmit"
-          >立即提交</el-button>
+          >{{$t('activate.submit')}}</el-button>
         </el-form>
       </div>
     </div>
