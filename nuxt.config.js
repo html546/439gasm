@@ -32,6 +32,7 @@ module.exports = {
   /*
   ** Global CSS
   */
+
   css: [
     'element-ui/lib/theme-chalk/index.css'
   ],
@@ -77,7 +78,7 @@ module.exports = {
     middleware: 'i18n'
   },
   generate: {
-    routes: ['/', '/trade1', '/trade2', '/trade3', '/login', '/register', '/forget', '/browser', '/friend', '/person', '/list/:id?', '/email/:id?', '/recommend', '/prize', '/reinvestment', '/activate', '/tc', '/tc/trade1', '/tc/trade2', '/tc/trade3', '/tc/login', '/tc/register', '/tc/forget', '/tc/browser', '/tc/friend', '/tc/person', '/tc/list/:id?', '/tc/email/:id?', '/tc/recommend', '/tc/prize', '/tc/reinvestment', '/tc/activate']
+    routes: ['/', '/trade1', '/trade2', '/trade3', '/login', '/register', '/forget', '/browser', '/friend', '/person', '/list/:id?', '/email/:id?', '/recommend', '/prize', '/reinvestment', '/activate', '/finance', '/tc', '/tc/trade1', '/tc/trade2', '/tc/trade3', '/tc/login', '/tc/register', '/tc/forget', '/tc/browser', '/tc/friend', '/tc/person', '/tc/list/:id?', '/tc/email/:id?', '/tc/recommend', '/tc/prize', '/tc/reinvestment', '/tc/activate', '/tc/finance']
   },
   proxy: {
     '/api': "http://t439.shangtua.com:88/"

@@ -49,10 +49,58 @@
               <el-button
                 type="primary"
                 size="mini"
+                @click="handleDetail(scope)"
               >查看詳情</el-button>
             </template>
           </el-table-column>
         </el-table>
+        <el-pagination
+          layout="prev,pager,next"
+          :total="total"
+          style="text-align:center;margin-top:20px;"
+          :background="true"
+          :current-page.sync="currentpage"
+          @prev-click="handlePrev"
+          @next-click="handleNext"
+          @current-change="handleChange"
+          v-loading="loading"
+          element-loading-text="拼命加载中"
+          element-loading-spinner="el-icon-loading"
+          element-loading-background="rgba(0, 0, 0, 0.8)"
+        ></el-pagination>
+        <el-dialog
+          title="奖金详情"
+          :visible.sync="dialogTableVisible"
+        >
+          <div
+            v-for="(item,index) in data"
+            :key="index"
+          >
+            <p>{{item.name}}</p>
+            <el-table
+              :data="item.list"
+              :border="true"
+              :stripe="true"
+            >
+              <el-table-column
+                label="奖金来源编号"
+                prop="fromname"
+              ></el-table-column>
+              <el-table-column
+                label="产生的奖金"
+                prop="trueval"
+              ></el-table-column>
+              <el-table-column
+                label="奖金计算公式"
+                prop="memo"
+              ></el-table-column>
+              <el-table-column
+                label="层数"
+                prop="layer"
+              ></el-table-column>
+            </el-table>
+          </div>
+        </el-dialog>
       </div>
     </div>
   </div>
@@ -67,11 +115,23 @@ export default {
       tableData: [],
       label1: '',
       label2: '',
-      label3: ''
+      label3: '',
+      dialogTableVisible: false,
+      gridData: [],
+      data: [],
+      total: 0,
+      currentpage: 1,
+      loading: true
     }
   },
   created() {
-    this.getData(1);
+    var prize_page = this.$store.state.prize_page;
+    if (prize_page > 1) {
+      this.currentpage = Number(prize_page);
+      this.getData(prize_page);
+    } else {
+      this.getData(1);
+    }
   },
   methods: {
     getData(page) {
@@ -82,6 +142,7 @@ export default {
       }).then(res => {
         console.log(res);
         this.tableData = res.data.data.res;
+        this.loading = false;
         var bonus = res.data.data.bonus;
         for (var i in bonus) {
           if (bonus[i].sheet == 'bonus1') {
@@ -95,7 +156,35 @@ export default {
       }).catch(err => {
         console.log(err);
       })
-    }
+    },
+    handleDetail(scope) {
+      axios.post('/api/prize/prizeform', {
+        userid: this.$store.state.message.userid,
+        sessionid: this.$store.state.message.sessionid,
+        id: scope.row.id
+      }).then(res => {
+        console.log(res);
+        this.data = res.data.data;
+        this.dialogTableVisible = true;
+      }).catch(err => {
+        console.log(err);
+      })
+    },
+    handlePrev(val) {
+      this.loading = true;
+      this.getData(val);
+      this.$store.state.commit('SET_PRIZEPAGE', val);
+    },
+    handleNext(val) {
+      this.loading = true;
+      this.getData(val);
+      this.$store.state.commit('SET_PRIZEPAGE', val);
+    },
+    handleChange(val) {
+      this.loading = true;
+      this.getData(val);
+      this.$store.state.commit('SET_PRIZEPAGE', val);
+    },
   },
   filters: {
     timefilter(val) {

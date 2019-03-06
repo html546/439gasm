@@ -7,7 +7,8 @@ export const state = () => ({
     page2: localStorage.getItem('page2') || 1,
     page3: localStorage.getItem('page3') || 1,
     notice: localStorage.getItem('notice') || 1,
-    email: localStorage.getItem('email') || 1
+    email: localStorage.getItem('email') || 1,
+    prize_page: localStorage.getItem('prize_page') || 1
 })
 
 export const mutations = {
@@ -36,6 +37,10 @@ export const mutations = {
     SET_EMAIL(state, page) {
         localStorage.setItem('email', page);
         state.email = page;
+    },
+    SET_PRIZEPAGE(state, page) {
+        localStorage.setItem('prize_page', page);
+        state.prize_page = page;
     },
     /* setLogin(state) {
         state.islogin = true;

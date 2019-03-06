@@ -185,7 +185,7 @@ export default {
         var that = this;
         axios.post('/api/Login/language', formdata).then(res => {
           console.log(res);
-          window.location.reload();
+          // window.location.reload();
         }).catch(err => {
           console.log(err);
         })
@@ -196,7 +196,7 @@ export default {
         var that = this;
         axios.post('/api/Login/language', formdata).then(res => {
           console.log(res);
-          window.location.reload();
+          // window.location.reload();
         }).catch(err => {
           console.log(err);
         })

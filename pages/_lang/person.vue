@@ -98,7 +98,7 @@
             <p>{{$t('person.manage')}}</p>
           </div>
         </nuxt-link>
-        <nuxt-link to="">
+        <nuxt-link :to="$i18n.path('finance')">
           <div class="friend_item">
             <img
               src="~assets/finance.png"
