@@ -11,11 +11,15 @@
               >
               <div class="register_right">
                 <h3>{{$t('person.register')}}</h3>
-                <el-button
-                  type="primary"
-                  plain
-                  round
-                >{{$t('person.click')}}</el-button>
+                <nuxt-link :to="$i18n.path('friend')">
+                  <el-button
+                    type="primary"
+                    plain
+                    round
+                  >
+                    {{$t('person.click')}}
+                  </el-button>
+                </nuxt-link>
               </div>
             </div>
           </el-col>
@@ -27,11 +31,15 @@
               >
               <div class="register_right">
                 <h3>{{$t('person.link')}}</h3>
-                <el-button
-                  type="primary"
-                  plain
-                  round
-                >{{$t('person.click')}}</el-button>
+                <nuxt-link :to="$i18n.path('friend')">
+                  <el-button
+                    type="primary"
+                    plain
+                    round
+                  >
+                    {{$t('person.click')}}
+                  </el-button>
+                </nuxt-link>
               </div>
             </div>
           </el-col>
@@ -72,7 +80,7 @@
     </div>
     <div class="friend_banner">
       <div class="friend_content">
-        <nuxt-link to="">
+        <nuxt-link :to="$i18n.path('recommend')">
           <div class="friend_item">
             <img
               src="~assets/organize.png"

@@ -77,7 +77,7 @@ module.exports = {
     middleware: 'i18n'
   },
   generate: {
-    routes: ['/', '/trade1', '/trade2', '/trade3', '/login', '/register', '/forget', '/browser', '/friend', '/person', '/list/:id?', '/email/:id?', '/tc', '/tc/trade1', '/tc/trade2', '/tc/trade3', '/tc/login', '/tc/register', '/tc/forget', '/tc/browser', '/tc/friend', '/tc/person', '/tc/list/:id?', '/tc/email/:id?']
+    routes: ['/', '/trade1', '/trade2', '/trade3', '/login', '/register', '/forget', '/browser', '/friend', '/person', '/list/:id?', '/email/:id?', '/recommend', '/tc', '/tc/trade1', '/tc/trade2', '/tc/trade3', '/tc/login', '/tc/register', '/tc/forget', '/tc/browser', '/tc/friend', '/tc/person', '/tc/list/:id?', '/tc/email/:id?', '/tc/recommend']
   },
   proxy: {
     '/api': "http://t439.shangtua.com:88/"
