@@ -20,7 +20,9 @@
         "lorr": "Landing or registration",
         "register": "register",
         "signout": "Sign out",
-        "person": "Personal Center"
+        "person": "Personal Center",
+        "investment": "reinvestment",
+        "activate": "activate"
     },
     "home": {
         "android": "Android Client Download",

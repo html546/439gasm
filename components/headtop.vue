@@ -66,12 +66,12 @@
               </el-menu-item>
               <el-menu-item index="8">
                 <nuxt-link :to="$i18n.path('reinvestment')">
-                  會員復投
+                  {{$t('links.investment')}}
                 </nuxt-link>
               </el-menu-item>
               <el-menu-item index="9">
                 <nuxt-link :to="$i18n.path('activate')">
-                  會員激活
+                  {{$t('links.activate')}}
                 </nuxt-link>
               </el-menu-item>
               <el-submenu
