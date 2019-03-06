@@ -89,7 +89,7 @@
             <p>{{$t('person.chart')}}</p>
           </div>
         </nuxt-link>
-        <nuxt-link to="">
+        <nuxt-link :to="$i18n.path('prize')">
           <div class="friend_item">
             <img
               src="~assets/prize.png"
