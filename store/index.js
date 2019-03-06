@@ -1,16 +1,19 @@
 export const state = () => ({
     locales: ['en', 'tc'],
-    locale: 'en',
+    locale: localStorage.getItem('locale') || 'en',
     // islogin: false,
     message: JSON.parse(localStorage.getItem('message')) || '',
     page1: localStorage.getItem('page1') || 1,
     page2: localStorage.getItem('page2') || 1,
-    page3: localStorage.getItem('page3') || 1
+    page3: localStorage.getItem('page3') || 1,
+    notice: localStorage.getItem('notice') || 1,
+    email: localStorage.getItem('email') || 1
 })
 
 export const mutations = {
     SET_LANG(state, locale) {
         if (state.locales.indexOf(locale) !== -1) {
+            localStorage.setItem('locale', locale);
             state.locale = locale;
         }
     },
@@ -26,6 +29,14 @@ export const mutations = {
         localStorage.setItem('page3', page);
         state.page3 = page;
     },
+    SET_NOTICE(state, page) {
+        localStorage.setItem('notice', page);
+        state.notice = page;
+    },
+    SET_EMAIL(state, page) {
+        localStorage.setItem('email', page);
+        state.email = page;
+    },
     /* setLogin(state) {
         state.islogin = true;
     },
@@ -40,6 +51,9 @@ export const mutations = {
         localStorage.removeItem('message');
         localStorage.removeItem('page1');
         localStorage.removeItem('page2');
+        localStorage.removeItem('page3');
+        localStorage.removeItem('notice');
+        localStorage.removeItem('email');
         state.message = '';
     }
 }

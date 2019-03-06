@@ -133,5 +133,21 @@
         "code": "驗證碼",
         "getcode": "獲取驗證碼",
         "follow": "掃描二維碼,幫好友註冊"
+    },
+    "person": {
+        "register": "會員註冊",
+        "click": "點擊查看",
+        "link": "推廣鏈接",
+        "order": "我的會員訂單",
+        "record": "操作記錄",
+        "chart": "組織圖",
+        "manage": "獎金管理",
+        "finance": "財務管理",
+        "miner": "我的礦機",
+        "notice": "公告列表",
+        "mailbox": "我的郵箱",
+        "release": "已釋放",
+        "release1": "待釋放",
+        "all": "總量"
     }
 }

@@ -133,5 +133,21 @@
         "code": "identifying code",
         "getcode": "Get identifying code",
         "follow": "Scanning QR Code to help friends register"
+    },
+    "person": {
+        "register": "Membership registration",
+        "click": "Click to view",
+        "link": "Referral Link",
+        "order": "My membership order",
+        "record": "Operation record",
+        "chart": "Organization chart",
+        "manage": "Bonus management",
+        "finance": "financial management",
+        "miner": "My miner",
+        "notice": "Announcement list",
+        "mailbox": "My mailbox",
+        "release": "released",
+        "release1": "to be released",
+        "all": "total"
     }
 }
