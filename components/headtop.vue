@@ -64,6 +64,16 @@
                   {{$t('links.friends')}}
                 </nuxt-link>
               </el-menu-item>
+              <el-menu-item index="8">
+                <nuxt-link :to="$i18n.path('reinvestment')">
+                  會員復投
+                </nuxt-link>
+              </el-menu-item>
+              <el-menu-item index="9">
+                <nuxt-link :to="$i18n.path('activate')">
+                  會員激活
+                </nuxt-link>
+              </el-menu-item>
               <el-submenu
                 index="6"
                 style="float:right;"
