@@ -7,6 +7,10 @@
           :border="true"
           :stripe="true"
           style="width:100%;"
+          v-loading="loading"
+          :element-loading-text="$t('prize.loading')"
+          element-loading-spinner="el-icon-loading"
+          element-loading-background="rgba(0, 0, 0, 0.8)"
         >
           <el-table-column
             prop="bonus1"
@@ -63,10 +67,6 @@
           @prev-click="handlePrev"
           @next-click="handleNext"
           @current-change="handleChange"
-          v-loading="loading"
-          :element-loading-text="$t('prize.loading')"
-          element-loading-spinner="el-icon-loading"
-          element-loading-background="rgba(0, 0, 0, 0.8)"
         ></el-pagination>
         <el-dialog
           :title="$t('prize.details')"
