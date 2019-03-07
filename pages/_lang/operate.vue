@@ -45,7 +45,7 @@
                 size="mini"
                 type="primary"
                 @click="handleCheck(scope)"
-              >{{$t('operate.type')}}</el-button>
+              >{{$t('operate.check')}}</el-button>
             </template>
           </el-table-column>
         </el-table>
