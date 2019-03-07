@@ -221,5 +221,23 @@
         "tel": "手機號",
         "Captcha": "圖形驗證碼",
         "code": "驗證碼"
+    },
+    "manage": {
+        "number": "編號",
+        "status": "訂單狀態",
+        "paydate": "付款日期",
+        "amount": "報單金額",
+        "registerdate": "註冊日期",
+        "name": "姓名",
+        "memberrank": "會員級別",
+        "teamrank": "管理級別",
+        "introduce": "推薦人",
+        "manager": "管理人",
+        "operate": "操作",
+        "check": "查看",
+        "detail": "訂單詳情",
+        "buydate": "購買日期",
+        "arritedate": "到款日期",
+        "type": "報單類別"
     }
 }

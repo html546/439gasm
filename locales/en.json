@@ -221,5 +221,23 @@
         "tel": "Cell-phone number",
         "Captcha": "Captcha",
         "code": "identifying code"
+    },
+    "manage": {
+        "number": "number",
+        "status": "Order status",
+        "paydate": "Date of payment",
+        "amount": "Amount of declaration",
+        "registerdate": "Date of register",
+        "name": "name",
+        "memberrank": "memberrank",
+        "teamrank": "teamrank",
+        "introduce": "introduce",
+        "manager": "administrant",
+        "operate": "operation",
+        "check": "check",
+        "detail": "Order details",
+        "buydate": "Date of purchase",
+        "arritedate": "Arrival date",
+        "type": "Type of declaration"
     }
 }

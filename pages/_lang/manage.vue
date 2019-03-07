@@ -10,15 +10,15 @@
           v-loading="loading"
         >
           <el-table-column
-            label="編號"
+            :label="$t('manage.number')"
             prop="username"
           ></el-table-column>
           <el-table-column
-            label="訂單狀態"
+            :label="$t('manage.status')"
             prop="bd_state"
           ></el-table-column>
           <el-table-column
-            label="付款日期"
+            :label="$t('manage.paydate')"
             prop="pay_date"
           >
             <template slot-scope="scope">
@@ -26,11 +26,11 @@
             </template>
           </el-table-column>
           <el-table-column
-            label="報單金額"
+            :label="$t('manage.amount')"
             prop="bd_money"
           ></el-table-column>
           <el-table-column
-            label="註冊日期"
+            :label="$t('manage.registerdate')"
             prop="reg_date"
           >
             <template slot-scope="scope">
@@ -39,57 +39,57 @@
           </el-table-column>
           <el-table-column
             prop="truename"
-            label="姓名"
+            :label="$t('manage.name')"
           ></el-table-column>
           <el-table-column
             prop="memberrank"
-            label="會員級別"
+            :label="$t('manage.memberrank')"
           ></el-table-column>
           <el-table-column
             prop="teamrank"
-            label="管理級別"
+            :label="$t('manage.teamrank')"
           ></el-table-column>
           <el-table-column
             prop="introduce"
-            label="推薦人"
+            :label="$t('manage.introduce')"
           ></el-table-column>
           <el-table-column
             prop="district"
-            label="管理人"
+            :label="$t('manage.manager')"
           ></el-table-column>
           <el-table-column
             prop="wealth"
-            label="操作"
+            :label="$t('manage.operate')"
           >
             <template slot-scope="scope">
               <el-button
                 size="mini"
                 type="primary"
                 @click="handleCheck(scope)"
-              >查看</el-button>
+              >{{$t('manage.check')}}</el-button>
             </template>
           </el-table-column>
         </el-table>
         <el-dialog
-          title="訂單詳情"
+          :title="$t('manage.detail')"
           :visible.sync="dialogTableVisible"
           @closed="handleClose"
         >
           <el-table :data="salesdetail">
             <el-table-column
               prop="username"
-              label="用戶編號"
+              :label="$t('manage.number')"
             ></el-table-column>
             <el-table-column
               prop="buy_date"
-              label="購買日期"
+              :label="$t('manage.buydate')"
             >
               <template slot-scope="scope">
                 <p>{{scope.row.buy_date | timefilter}}</p>
               </template>
             </el-table-column>
             <el-table-column
-              label="到款日期"
+              :label="$t('manage.arritedate')"
               prop="pay_date"
             >
               <template slot-scope="scope">
@@ -98,15 +98,15 @@
             </el-table-column>
             <el-table-column
               prop="bd_type"
-              label="報單類別"
+              :label="$t('manage.type')"
             ></el-table-column>
             <el-table-column
               prop="bd_state"
-              label="報單狀態"
+              :label="$t('manage.status')"
             ></el-table-column>
             <el-table-column
               prop="bd_money"
-              label="報單金額"
+              :label="$t('manage.amount')"
             ></el-table-column>
           </el-table>
         </el-dialog>
