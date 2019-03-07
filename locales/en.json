@@ -205,5 +205,21 @@
         "money": "money",
         "balance": "balance",
         "remarks": "Remarks"
+    },
+    "transfer": {
+        "balance": "Account balance",
+        "amount": "Transfer amount",
+        "type": "Transfer type",
+        "choose": "Please choose the type of transfer",
+        "mini": "Minimum Transfer Amount",
+        "number": "Transfer Number",
+        "max": "Maximum Transfer Amount",
+        "multiple": "integer multiple",
+        "rate": "exchange rate",
+        "charge": "Service Charge",
+        "pass2": "Two level cipher",
+        "tel": "Cell-phone number",
+        "Captcha": "Captcha",
+        "code": "identifying code"
     }
 }

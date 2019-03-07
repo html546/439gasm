@@ -205,5 +205,21 @@
         "money": "金額",
         "balance": "錢包餘額",
         "remarks": "備註"
+    },
+    "transfer": {
+        "balance": "賬戶餘額",
+        "amount": "轉賬金額",
+        "type": "轉賬類型",
+        "choose": "請選擇轉賬類型",
+        "mini": "最小轉賬金額",
+        "number": "轉入人編號",
+        "max": "最大轉賬金額",
+        "multiple": "整數倍",
+        "rate": "匯率",
+        "charge": "手續費",
+        "pass2": "二級密碼",
+        "tel": "手機號",
+        "Captcha": "圖形驗證碼",
+        "code": "驗證碼"
     }
 }
