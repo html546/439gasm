@@ -24,11 +24,19 @@
       <el-button
         type="danger"
         v-if="transfer"
-      >{{$t('finance.transfer')}}</el-button>
+      >
+        <nuxt-link :to="link1">
+          {{$t('finance.transfer')}}
+        </nuxt-link>
+      </el-button>
       <el-button
         type="success"
         v-if="recharge"
-      >{{$t('finance.recharge')}}</el-button>
+      >
+        <nuxt-link :to="$i18n.path('activate')">
+          {{$t('finance.recharge')}}
+        </nuxt-link>
+      </el-button>
       <span
         slot="footer"
         class="dialog-footer"
@@ -46,7 +54,8 @@ export default {
       centerDialogVisible: false,
       transfer: false,
       recharge: false,
-      link: ''
+      link: '',
+      link1: ''
     }
   },
   created() {
@@ -61,6 +70,7 @@ export default {
       } else if (type == 3) {
         this.transfer = true;
         this.recharge = false;
+        this.link1 = this.$i18n.path(`transfer/${type}`);
       } else {
         this.recharge = false;
         this.transfer = false;
