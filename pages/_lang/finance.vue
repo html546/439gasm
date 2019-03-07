@@ -4,36 +4,36 @@
       <el-button
         type="danger"
         @click="dialogShow(1)"
-      >激活账户</el-button>
+      >{{$t('finance.activate')}}</el-button>
       <el-button
         type="warning"
         @click="dialogShow(2)"
-      >现金账户</el-button>
+      >{{$t('finance.cash')}}</el-button>
       <el-button
         type="success"
         @click="dialogShow(3)"
-      >注册账户</el-button>
+      >{{$t('finance.register')}}</el-button>
     </div>
     <el-dialog
-      title="跳转提示"
+      :title="$t('finance.skip')"
       :visible.sync="centerDialogVisible"
     >
       <nuxt-link :to="link">
-        <el-button type="primary">查看详情</el-button>
+        <el-button type="primary">{{$t('finance.view')}}</el-button>
       </nuxt-link>
       <el-button
         type="danger"
         v-if="transfer"
-      >转账</el-button>
+      >{{$t('finance.transfer')}}</el-button>
       <el-button
         type="success"
         v-if="recharge"
-      >充值</el-button>
+      >{{$t('finance.recharge')}}</el-button>
       <span
         slot="footer"
         class="dialog-footer"
       >
-        <el-button @click="centerDialogVisible= false">取消</el-button>
+        <el-button @click="centerDialogVisible= false">{{$t('finance.cancel')}}</el-button>
       </span>
     </el-dialog>
   </div>

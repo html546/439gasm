@@ -187,5 +187,23 @@
         "generate": "Bonus generated",
         "formula": "Formula for calculating bonus",
         "layer": "layer number"
+    },
+    "finance": {
+        "activate": "Activate account",
+        "cash": "Cash account",
+        "register": "Registered accounts",
+        "skip": "Jump prompt",
+        "view": "View details",
+        "transfer": "Transfer accounts",
+        "recharge": "recharge",
+        "cancel": "cancel"
+    },
+    "finance_detail": {
+        "time": "time",
+        "userid": "member ID",
+        "type": "Consumption type",
+        "money": "money",
+        "balance": "balance",
+        "remarks": "Remarks"
     }
 }

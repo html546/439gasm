@@ -14,7 +14,7 @@
         ></el-table-column>
         <el-table-column
           prop="time"
-          label="变动时间"
+          :label="$t('finance_detail.time')"
         >
           <template slot-scope="scope">
             {{scope.row.time | timefilter}}
@@ -22,23 +22,23 @@
         </el-table-column>
         <el-table-column
           prop="username"
-          label="会员编号"
+          :label="$t('finance_detail.userid')"
         ></el-table-column>
         <el-table-column
           prop="type"
-          label="消費類型"
+          :label="$t('finance_detail.type')"
         ></el-table-column>
         <el-table-column
           prop="money"
-          label="變動金額"
+          :label="$t('finance_detail.money')"
         ></el-table-column>
         <el-table-column
           prop="balance"
-          label="錢包餘額"
+          :label="$t('finance_detail.balance')"
         ></el-table-column>
         <el-table-column
           prop="mome"
-          label="備註"
+          :label="$t('finance_detail.remarks')"
         ></el-table-column>
       </el-table>
       <el-pagination

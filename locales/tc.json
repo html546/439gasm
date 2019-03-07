@@ -187,5 +187,23 @@
         "generate": "產生的獎金",
         "formula": "獎金計算公式",
         "layer": "層數"
+    },
+    "finance": {
+        "activate": "激活賬戶",
+        "cash": "現金賬戶",
+        "register": "註冊賬戶",
+        "skip": "跳轉提示",
+        "view": "查看詳情",
+        "transfer": "轉賬",
+        "recharge": "充值",
+        "cancel": "取消"
+    },
+    "finance_detail": {
+        "time": "變動時間",
+        "userid": "會員編號",
+        "type": "消費類型",
+        "money": "金額",
+        "balance": "錢包餘額",
+        "remarks": "備註"
     }
 }
