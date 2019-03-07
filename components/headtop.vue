@@ -79,7 +79,7 @@
                 style="float:right;"
               >
                 <template slot="title">
-                  16366644423
+                  {{$store.state.message.username}}
                 </template>
                 <el-menu-item index="6-1">
                   <nuxt-link :to="$i18n.path('person')">
