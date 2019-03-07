@@ -10,7 +10,8 @@ export const state = () => ({
     email: localStorage.getItem('email') || 1,
     prize_page: localStorage.getItem('prize_page') || 1,
     finance: localStorage.getItem('finance') || 1,
-    manage: localStorage.getItem('manage') || 1
+    manage: localStorage.getItem('manage') || 1,
+    operate: localStorage.getItem('operate') || 1
 })
 
 export const mutations = {
@@ -51,6 +52,10 @@ export const mutations = {
     SET_MANAGE(state, page) {
         localStorage.setItem('manage', page);
         state.manage = page;
+    },
+    SET_OPERATE(state, page) {
+        localStorage.setItem('operate', page);
+        state.operate = page;
     },
     /* setLogin(state) {
         state.islogin = true;

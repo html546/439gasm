@@ -69,11 +69,13 @@
               >
               <div class="register_right">
                 <h3>{{$t('person.record')}}</h3>
-                <el-button
-                  type="primary"
-                  plain
-                  round
-                >{{$t('person.click')}}</el-button>
+                <nuxt-link :to="$i18n.path('operate')">
+                  <el-button
+                    type="primary"
+                    plain
+                    round
+                  >{{$t('person.click')}}</el-button>
+                </nuxt-link>
               </div>
             </div>
           </el-col>

@@ -239,5 +239,14 @@
         "buydate": "Date of purchase",
         "arritedate": "Arrival date",
         "type": "Type of declaration"
+    },
+    "operate": {
+        "buydate": "Date of purchase",
+        "paydate": "Date of payment",
+        "amount": "Amount of declaration",
+        "type": "Type of declaration",
+        "status": "Order status",
+        "operate": "operation",
+        "check": "check"
     }
 }
