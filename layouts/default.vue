@@ -101,7 +101,7 @@ export default {
   },
   methods: {
     getAd() {
-      axios.post('http://127.0.0.1:3000/api/Login/getad').then(res => {
+      axios.post('/api/Login/getad').then(res => {
         // console.log(res);
         this.bg = res.data.data;
       })
